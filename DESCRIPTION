@@ -1,0 +1,65 @@
+Package: BivLaplaceRL
+Type: Package
+Title: Bivariate Laplace Transforms, Stochastic Orders, and Entropy Measures in Reliability
+Version: 0.1.0
+Authors@R: c(
+    person("Mahesh", "Divakaran",
+           email = "imaheshdivakaran@gmail.com",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-3488-0857",
+                       affiliation = "Amity School of Applied Sciences, Amity University Lucknow")),
+    person("S.", "Jayalekshmi",
+           role = c("aut"),
+           comment = c(affiliation = "Department of Statistics, Cochin University of Science and Technology")),
+    person("G.", "Rajesh",
+           email = "rajeshgstat@gmail.com",
+           role = c("aut"),
+           comment = c(affiliation = "Department of Statistics, Cochin University of Science and Technology")),
+    person("N. Unnikrishnan", "Nair",
+           role = c("aut"),
+           comment = c(affiliation = "Department of Statistics, Cochin University of Science and Technology")),
+    person("Smitha", "S.",
+           role = c("aut"),
+           comment = c(affiliation = "K. E. College, Mannanam"))
+  )
+Description: Implements methods for bivariate Laplace transforms of residual lives and
+    reversed residual lives, associated stochastic ordering concepts, and dynamic entropy
+    measures for reliability analysis. The package covers three primary research areas:
+    (1) Bivariate Laplace transform of residual lives and stochastic comparisons based
+    on the bivariate Laplace transform order of residual lives (BLt-rl), including weak
+    bivariate hazard rate, mean residual life, and relative mean residual life orders,
+    nonparametric estimation, and NBUHR/NWUHR aging class characterisation
+    (Jayalekshmi, Rajesh, and Nair, 2022, <doi:10.1080/03610926.2022.2085874>);
+    (2) Bivariate Laplace transform order of reversed residual lives (BLt-Rrl), reversed
+    hazard gradient, reversed mean residual life, and the associated stochastic orders
+    (weak bivariate reversed hazard rate, weak bivariate reversed mean residual life);
+    (3) Residual entropy generating function, a dynamic version of Golomb's (1966)
+    information generating function whose derivative yields the residual entropy of
+    Ebrahimi and Pellerey (1995), with nonparametric estimation and distribution
+    characterisation.  Parametric families supported include the Gumbel bivariate
+    exponential, Farlie-Gumbel-Morgenstern (FGM), bivariate power, and Schur-constant
+    distributions.  Plotting utilities and a simulation framework for evaluating
+    estimator performance are also provided.
+License: GPL-3
+URL: https://maheshdivakaran.github.io/BivLaplaceRL/,
+    https://github.com/maheshdivakaran/BivLaplaceRL
+BugReports: https://github.com/maheshdivakaran/BivLaplaceRL/issues
+Encoding: UTF-8
+Config/Needs/website: pkgdown
+LazyData: true
+RoxygenNote: 7.3.3
+Depends:
+    R (>= 4.1.0)
+Imports:
+    stats,
+    graphics
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    MASS,
+    survival,
+    covr
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+NeedsCompilation: no
