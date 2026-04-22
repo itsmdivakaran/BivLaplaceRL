@@ -63,3 +63,4 @@ Suggests:
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 NeedsCompilation: no
+Language: en-GB
