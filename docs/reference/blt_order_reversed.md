@@ -38,7 +38,7 @@ blt_order_reversed(
 ## Value
 
 Same structure as
-[`blt_order_residual`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_order_residual.md).
+[`blt_order_residual`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_order_residual.md).
 
 ## References
 
@@ -46,8 +46,8 @@ Jayalekshmi S., Rajesh G. — IJRQSE, Definition 2.
 
 ## See also
 
-[`blt_reversed`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_reversed.md),
-[`biv_wrhr_order`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/biv_wrhr_order.md)
+[`blt_reversed`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_reversed.md),
+[`biv_wrhr_order`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_wrhr_order.md)
 
 ## Examples
 

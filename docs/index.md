@@ -5,6 +5,29 @@ stochastic ordering concepts, and entropy measures in reliability
 analysis. It consolidates the methods from three research publications
 into a single, CRAN-ready package.
 
+#### Residual Life Analysis
+
+Bivariate Laplace transforms of residual lives — closed-form Gumbel
+results, general numerical integration, nonparametric estimation, and
+NBUHR/NWUHR aging class characterisation.
+
+#### Reversed Residual Lives
+
+BLt-Rrl framework: reversed hazard gradient, reversed mean residual
+life, and closed-form transforms for FGM and bivariate power
+distributions.
+
+#### Entropy & Information
+
+Residual entropy generating function (REGF) — a dynamic generalisation
+of Golomb’s information generating function, with nonparametric
+estimation and Monte-Carlo simulation.
+
+#### Stochastic Orders
+
+Seven bivariate stochastic order checks: BLt-rl, BLt-Rrl, weak hazard
+rate, MRL, relative MRL, reversed hazard rate, and reversed MRL orders.
+
 ## Research Basis
 
 | Paper | Journal | Authors |
@@ -27,88 +50,87 @@ into a single, CRAN-ready package.
 
 ### Bivariate Laplace Transform of Residual Lives
 
-- [`blt_residual()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_residual.md)
+- [`blt_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_residual.md)
   — numerical computation for any survival function
-- [`blt_residual_gumbel()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_residual_gumbel.md)
+- [`blt_residual_gumbel()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_residual_gumbel.md)
   — closed-form for Gumbel distribution
-- [`biv_hazard_gradient()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/biv_hazard_gradient.md)
+- [`biv_hazard_gradient()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_hazard_gradient.md)
   — bivariate hazard gradient
-- [`biv_mean_residual()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/biv_mean_residual.md)
+- [`biv_mean_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_mean_residual.md)
   — bivariate mean residual life
-- [`nbuhr_test()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/nbuhr_test.md)
+- [`nbuhr_test()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/nbuhr_test.md)
   — NBUHR/NWUHR aging class test
-- [`np_blt_residual()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/np_blt_residual.md)
+- [`np_blt_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/np_blt_residual.md)
   — nonparametric estimator
-- [`sim_blt_residual()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/sim_blt_residual.md)
+- [`sim_blt_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/sim_blt_residual.md)
   — Monte-Carlo simulation study
 
 ### Bivariate Laplace Transform of Reversed Residual Lives
 
-- [`blt_reversed()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_reversed.md)
+- [`blt_reversed()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_reversed.md)
   — for any joint CDF
-- [`blt_reversed_fgm()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_reversed_fgm.md)
+- [`blt_reversed_fgm()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_reversed_fgm.md)
   — closed form for FGM
-- [`blt_reversed_power()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_reversed_power.md)
+- [`blt_reversed_power()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_reversed_power.md)
   — for bivariate power distribution
-- [`biv_rhazard_gradient()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/biv_rhazard_gradient.md)
+- [`biv_rhazard_gradient()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_rhazard_gradient.md)
   — reversed hazard gradient
-- [`biv_rmrl()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/biv_rmrl.md)
+- [`biv_rmrl()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_rmrl.md)
   — reversed mean residual life
 
 ### Stochastic Orders
 
-- [`blt_order_residual()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_order_residual.md)
+- [`blt_order_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_order_residual.md)
   — BLt-rl order
-- [`blt_order_reversed()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_order_reversed.md)
+- [`blt_order_reversed()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_order_reversed.md)
   — BLt-Rrl order
-- [`biv_whr_order()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/biv_whr_order.md)
+- [`biv_whr_order()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_whr_order.md)
   — weak bivariate hazard rate order
-- [`biv_wmrl_order()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/biv_wmrl_order.md)
+- [`biv_wmrl_order()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_wmrl_order.md)
   — weak bivariate MRL order
-- [`biv_brlmr_order()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/biv_brlmr_order.md)
+- [`biv_brlmr_order()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_brlmr_order.md)
   — bivariate relative MRL order
-- [`biv_wrhr_order()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/biv_wrhr_order.md)
+- [`biv_wrhr_order()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_wrhr_order.md)
   — weak bivariate reversed hazard rate order
-- [`biv_wrmrl_order()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/biv_wrmrl_order.md)
+- [`biv_wrmrl_order()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_wrmrl_order.md)
   — weak bivariate reversed MRL order
 
 ### Entropy Measures
 
-- [`shannon_entropy()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/shannon_entropy.md)
+- [`shannon_entropy()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/shannon_entropy.md)
   — Shannon differential entropy
-- [`info_gen_function()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/info_gen_function.md)
+- [`info_gen_function()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/info_gen_function.md)
   — Golomb information generating function
-- [`residual_entropy()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/residual_entropy.md)
+- [`residual_entropy()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/residual_entropy.md)
   — dynamic residual entropy (Ebrahimi & Pellerey 1995)
-- [`residual_info_gen()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/residual_info_gen.md)
+- [`residual_info_gen()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/residual_info_gen.md)
   — residual entropy generating function (REGF)
-- [`regf_profile()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/regf_profile.md)
+- [`regf_profile()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/regf_profile.md)
   — REGF profile over α
-- [`regf_characterise()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/regf_characterise.md)
+- [`regf_characterise()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/regf_characterise.md)
   — distribution characterisation via REGF
-- [`np_residual_info_gen()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/np_residual_info_gen.md)
+- [`np_residual_info_gen()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/np_residual_info_gen.md)
   — nonparametric REGF estimator
-- [`sim_regf()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/sim_regf.md)
+- [`sim_regf()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/sim_regf.md)
   — Monte-Carlo simulation for REGF estimator
 
 ### Plotting
 
-- [`plot_blt_residual()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/plot_blt_residual.md),
-  [`plot_blt_reversed()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/plot_blt_reversed.md),
-  [`plot_regf()`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/plot_regf.md)
+- [`plot_blt_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/plot_blt_residual.md),
+  [`plot_blt_reversed()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/plot_blt_reversed.md),
+  [`plot_regf()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/plot_regf.md)
 
 ## Installation
+
+``` r
+# Install from CRAN
+install.packages("BivLaplaceRL")
+```
 
 ``` r
 # Development version from GitHub
 # install.packages("devtools")
 devtools::install_github("itsmdivakaran/BivLaplaceRL")
-```
-
-Once on CRAN:
-
-``` r
-install.packages("BivLaplaceRL")
 ```
 
 ## Quick Start

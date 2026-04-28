@@ -34,8 +34,8 @@ Statistical Association\*, 62(1), 81–93.
 
 ## See also
 
-[`residual_entropy`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/residual_entropy.md),
-[`info_gen_function`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/info_gen_function.md)
+[`residual_entropy`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/residual_entropy.md),
+[`info_gen_function`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/info_gen_function.md)
 
 ## Examples
 

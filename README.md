@@ -11,6 +11,36 @@
 ordering concepts, and entropy measures in reliability analysis.  It consolidates
 the methods from three research publications into a single, CRAN-ready package.
 
+<div class="feature-row">
+
+<div class="feature-card">
+<h4>Residual Life Analysis</h4>
+<p>Bivariate Laplace transforms of residual lives — closed-form Gumbel results,
+general numerical integration, nonparametric estimation, and NBUHR/NWUHR aging
+class characterisation.</p>
+</div>
+
+<div class="feature-card">
+<h4>Reversed Residual Lives</h4>
+<p>BLt-Rrl framework: reversed hazard gradient, reversed mean residual life, and
+closed-form transforms for FGM and bivariate power distributions.</p>
+</div>
+
+<div class="feature-card">
+<h4>Entropy & Information</h4>
+<p>Residual entropy generating function (REGF) — a dynamic generalisation of
+Golomb's information generating function, with nonparametric estimation and
+Monte-Carlo simulation.</p>
+</div>
+
+<div class="feature-card">
+<h4>Stochastic Orders</h4>
+<p>Seven bivariate stochastic order checks: BLt-rl, BLt-Rrl, weak hazard rate,
+MRL, relative MRL, reversed hazard rate, and reversed MRL orders.</p>
+</div>
+
+</div>
+
 ## Research Basis
 
 | Paper | Journal | Authors |
@@ -68,14 +98,14 @@ the methods from three research publications into a single, CRAN-ready package.
 ## Installation
 
 ```r
+# Install from CRAN
+install.packages("BivLaplaceRL")
+```
+
+```r
 # Development version from GitHub
 # install.packages("devtools")
 devtools::install_github("itsmdivakaran/BivLaplaceRL")
-```
-
-Once on CRAN:
-```r
-install.packages("BivLaplaceRL")
 ```
 
 ## Quick Start

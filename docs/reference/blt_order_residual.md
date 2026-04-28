@@ -67,8 +67,8 @@ Jayalekshmi S., Rajesh G., Nair N.U. (2022), Definition 4.1 & Prop. 4.1.
 
 ## See also
 
-[`blt_residual`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_residual.md),
-[`biv_whr_order`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/biv_whr_order.md)
+[`blt_residual`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_residual.md),
+[`biv_whr_order`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_whr_order.md)
 
 ## Examples
 

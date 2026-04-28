@@ -1,14 +1,33 @@
-url: https://maheshdivakaran.github.io/BivLaplaceRL/
+url: https://itsmdivakaran.github.io/BivLaplaceRL/
+
+development:
+  mode: auto
 
 template:
   bootstrap: 5
   bootswatch: flatly
   bslib:
-    primary: "#2c7bb6"
+    primary: "#1a5276"
+    info:    "#2980b9"
+    secondary: "#5d6d7e"
     base_font:
-      google: "Nunito"
+      google: "Inter"
     heading_font:
-      google: "Montserrat"
+      google: "Raleway"
+    code_font:
+      google: "Fira Code"
+  includes:
+    in_header: |
+      <meta name="description"
+            content="R package for bivariate Laplace transforms, stochastic orders, and entropy measures in reliability analysis.">
+
+opengraph:
+  image:
+    src: man/figures/logo.png
+    alt: "BivLaplaceRL package logo"
+  twitter:
+    creator: "@itsmdivakaran"
+    card: summary
 
 home:
   title: "BivLaplaceRL — Bivariate Laplace Transforms & Entropy in Reliability"
@@ -17,19 +36,27 @@ home:
     reversed residual lives, associated stochastic orders, and the residual
     entropy generating function, based on research by Jayalekshmi, Rajesh,
     Nair and Smitha.
-  links:
-  - text: GitHub repository
-    href: https://github.com/maheshdivakaran/BivLaplaceRL
-  - text: Report a bug
-    href: https://github.com/maheshdivakaran/BivLaplaceRL/issues
+  sidebar:
+    structure: [links, license, citation, authors, dev]
+    components:
+      links:
+        title: "Useful Links"
+        text: |
+          - [Get started](articles/introduction.html)
+          - [Function reference](reference/index.html)
+          - [Changelog](news/index.html)
+          - [CRAN](https://CRAN.R-project.org/package=BivLaplaceRL)
+          - [Report a bug](https://github.com/itsmdivakaran/BivLaplaceRL/issues)
 
 navbar:
+  bg: primary
+  type: dark
   structure:
     left:  [intro, reference, articles, news]
     right: [search, github]
   components:
     intro:
-      text: Introduction
+      text: Get Started
       href: articles/introduction.html
     reference:
       text: Reference
@@ -44,13 +71,15 @@ navbar:
       href: news/index.html
     github:
       icon: fab fa-github fa-lg
-      href: https://github.com/maheshdivakaran/BivLaplaceRL
+      href: https://github.com/itsmdivakaran/BivLaplaceRL
+      aria-label: GitHub repository
 
 reference:
 - title: "Parametric Distributions"
   desc: >
-    Gumbel bivariate exponential, FGM, bivariate power, and Schur-constant
-    distributions: density, CDF, survival function, and random generation.
+    Four bivariate families used as running examples throughout the package:
+    Gumbel bivariate exponential, Farlie-Gumbel-Morgenstern (FGM), bivariate
+    power, and Schur-constant.  Each provides d/p/s/r functions where applicable.
   contents:
   - starts_with("dgumbel_biv")
   - starts_with("pgumbel_biv")
@@ -69,9 +98,10 @@ reference:
 
 - title: "Bivariate Laplace Transform of Residual Lives"
   desc: >
-    Functions for computing and testing the bivariate Laplace transform of
-    residual lives, including closed-form results for the Gumbel distribution,
-    nonparametric estimation, and the NBUHR/NWUHR aging class test.
+    Core functions from Jayalekshmi, Rajesh & Nair (2022, *Comm. Stat.* Theory
+    and Methods).  Covers the closed-form Gumbel result, general numerical
+    integration, bivariate hazard gradient and MRL, NBUHR/NWUHR aging class
+    characterisation, nonparametric estimation, and a Monte-Carlo simulator.
   contents:
   - blt_residual
   - blt_residual_gumbel
@@ -83,8 +113,10 @@ reference:
 
 - title: "Bivariate Laplace Transform of Reversed Residual Lives"
   desc: >
-    Functions for computing the bivariate Laplace transform of past (reversed)
-    residual lives, the reversed hazard gradient, and the reversed MRL.
+    Implements the BLt-Rrl framework from Jayalekshmi & Rajesh (*Int. J.
+    Reliability, Quality & Safety Eng.*): reversed hazard gradient, reversed
+    mean residual life, and closed-form results for FGM and bivariate power
+    distributions.
   contents:
   - blt_reversed
   - blt_reversed_fgm
@@ -94,9 +126,10 @@ reference:
 
 - title: "Stochastic Ordering"
   desc: >
-    Functions for checking bivariate stochastic orders: BLt-rl, BLt-Rrl,
-    weak bivariate hazard rate, MRL, reversed hazard rate, and reversed MRL
-    orders.
+    Seven bivariate stochastic order checks: BLt-rl, BLt-Rrl, weak bivariate
+    hazard rate, MRL, bivariate relative MRL, reversed hazard rate, and
+    reversed MRL.  Each function returns a logical flag and supporting
+    diagnostic values.
   contents:
   - blt_order_residual
   - blt_order_reversed
@@ -108,9 +141,10 @@ reference:
 
 - title: "Entropy and Information Generating Functions"
   desc: >
-    Shannon entropy, Golomb information generating function, residual entropy,
-    and the residual entropy generating function (REGF) with nonparametric
-    estimation.
+    Shannon entropy, Golomb information generating function, dynamic residual
+    entropy (Ebrahimi & Pellerey 1995), and the residual entropy generating
+    function (REGF) introduced in Smitha, Rajesh & Jayalekshmi (2024, *JISA*
+    62(1)).  Includes nonparametric estimation and a Monte-Carlo simulator.
   contents:
   - shannon_entropy
   - info_gen_function
@@ -122,17 +156,20 @@ reference:
   - sim_regf
 
 - title: "Plotting Utilities"
-  desc: Ready-made plots for Laplace transforms and entropy measures.
+  desc: >
+    Convenience wrappers that produce ready-made plots for the BLT of residual
+    lives, the BLT of reversed residual lives, and the REGF profile.
   contents:
   - plot_blt_residual
   - plot_blt_reversed
   - plot_regf
 
 - title: "Package"
+  desc: Package-level documentation and metadata.
   contents:
   - BivLaplaceRL-package
 
 footer:
   structure:
-    left: developed_by
+    left:  developed_by
     right: built_with

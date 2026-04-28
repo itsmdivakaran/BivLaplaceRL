@@ -13,16 +13,19 @@
 <link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Nunito-0.4.10/font.css" rel="stylesheet">
-<link href="deps/Montserrat-0.4.10/font.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Inter-0.4.10/font.css" rel="stylesheet">
+<link href="deps/Fira_Code-0.4.10/font.css" rel="stylesheet">
+<link href="deps/Raleway-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="BivLaplaceRL — Bivariate Laplace Transforms &amp; Entropy in Reliability">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<meta property="og:title" content="BivLaplaceRL — Bivariate Laplace Transforms &amp; Entropy in Reliability">
 <meta name="description" content="R package implementing bivariate Laplace transforms of residual and reversed residual lives, associated stochastic orders, and the residual entropy generating function, based on research by Jayalekshmi, Rajesh, Nair and Smitha.
 ">
 <meta property="og:description" content="R package implementing bivariate Laplace transforms of residual and reversed residual lives, associated stochastic orders, and the residual entropy generating function, based on research by Jayalekshmi, Rajesh, Nair and Smitha.
 ">
-<meta property="og:image" content="https://maheshdivakaran.github.io/BivLaplaceRL/logo.svg">
+<meta property="og:image" content="https://itsmdivakaran.github.io/BivLaplaceRL/logo.svg">
+<meta name="description" content="R package for bivariate Laplace transforms, stochastic orders, and entropy measures in reliability analysis.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -32,7 +35,7 @@
 
     <a class="navbar-brand me-2" href="index.html">BivLaplaceRL</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +44,7 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="articles/introduction.html">Introduction</a></li>
+<li class="nav-item"><a class="nav-link" href="articles/introduction.html">Get Started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
@@ -55,7 +58,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/maheshdivakaran/BivLaplaceRL"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/itsmdivakaran/BivLaplaceRL" aria-label="GitHub repository"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -71,6 +74,40 @@
 <!-- badges: start -->
 
 <p><strong>BivLaplaceRL</strong> is an R package for bivariate Laplace transforms, stochastic ordering concepts, and entropy measures in reliability analysis. It consolidates the methods from three research publications into a single, CRAN-ready package.</p>
+<div class="feature-row">
+<div class="feature-card">
+<h4>
+Residual Life Analysis
+</h4>
+<p>
+Bivariate Laplace transforms of residual lives — closed-form Gumbel results, general numerical integration, nonparametric estimation, and NBUHR/NWUHR aging class characterisation.
+</p>
+</div>
+<div class="feature-card">
+<h4>
+Reversed Residual Lives
+</h4>
+<p>
+BLt-Rrl framework: reversed hazard gradient, reversed mean residual life, and closed-form transforms for FGM and bivariate power distributions.
+</p>
+</div>
+<div class="feature-card">
+<h4>
+Entropy &amp; Information
+</h4>
+<p>
+Residual entropy generating function (REGF) — a dynamic generalisation of Golomb’s information generating function, with nonparametric estimation and Monte-Carlo simulation.
+</p>
+</div>
+<div class="feature-card">
+<h4>
+Stochastic Orders
+</h4>
+<p>
+Seven bivariate stochastic order checks: BLt-rl, BLt-Rrl, weak hazard rate, MRL, relative MRL, reversed hazard rate, and reversed MRL orders.
+</p>
+</div>
+</div>
 <div class="section level2">
 <h2 id="research-basis">Research Basis<a class="anchor" aria-label="anchor" href="#research-basis"></a>
 </h2>
@@ -211,18 +248,18 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Install from CRAN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BivLaplaceRL"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Development version from GitHub</span></span>
 <span><span class="co"># install.packages("devtools")</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"itsmdivakaran/BivLaplaceRL"</span><span class="op">)</span></span></code></pre></div>
-<p>Once on CRAN:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BivLaplaceRL"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://itsmdivakaran.github.io/BivLaplaceRL/" class="external-link">BivLaplaceRL</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://itsmdivakaran.github.io/BivLaplaceRL/">BivLaplaceRL</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># 1. Simulate from Gumbel bivariate exponential</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
@@ -264,13 +301,16 @@
 <p>GPL-3 © 2024 Mahesh Divakaran</p>
 </div>
 </div>
-  </main><aside class="col-md-3"><div class="links">
-<h2 data-toc-skip>Links</h2>
+  </main><aside class="col-md-3"><div class="useful-links">
+<h2 data-toc-skip>Useful Links</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/itsmdivakaran/BivLaplaceRL/" class="external-link">Browse source code</a></li>
+<li><ul>
+<li><a href="articles/introduction.html">Get started</a></li>
+<li><a href="reference/index.html">Function reference</a></li>
+<li><a href="news/index.html">Changelog</a></li>
+<li><a href="https://CRAN.R-project.org/package=BivLaplaceRL" class="external-link">CRAN</a></li>
 <li><a href="https://github.com/itsmdivakaran/BivLaplaceRL/issues" class="external-link">Report a bug</a></li>
-<li><a href="https://github.com/maheshdivakaran/BivLaplaceRL" class="external-link">GitHub repository</a></li>
-<li><a href="https://github.com/maheshdivakaran/BivLaplaceRL/issues" class="external-link">Report a bug</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -282,7 +322,6 @@
 </li>
 </ul>
 </div>
-
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
@@ -303,15 +342,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=BivLaplaceRL" class="external-link"><img src="https://www.r-pkg.org/badges/version/BivLaplaceRL" alt="CRAN status"></a></li>
-<li><a href="https://github.com/itsmdivakaran/BivLaplaceRL/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/itsmdivakaran/BivLaplaceRL/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://app.codecov.io/gh/itsmdivakaran/BivLaplaceRL?branch=main" class="external-link"><img src="https://codecov.io/gh/itsmdivakaran/BivLaplaceRL/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://www.gnu.org/licenses/gpl-3.0" class="external-link"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></li>
-</ul>
-</div>
+
 
   </aside>
 </div>

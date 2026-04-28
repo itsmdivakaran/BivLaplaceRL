@@ -53,9 +53,9 @@ generating function. \*Journal of the Indian Statistical Association\*,
 
 ## See also
 
-[`info_gen_function`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/info_gen_function.md),
-[`residual_entropy`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/residual_entropy.md),
-[`np_residual_info_gen`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/np_residual_info_gen.md)
+[`info_gen_function`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/info_gen_function.md),
+[`residual_entropy`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/residual_entropy.md),
+[`np_residual_info_gen`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/np_residual_info_gen.md)
 
 ## Examples
 

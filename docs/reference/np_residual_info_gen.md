@@ -43,8 +43,8 @@ Indian Statistical Association\*, 62(1), 81–93.
 
 ## See also
 
-[`residual_info_gen`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/residual_info_gen.md),
-[`sim_regf`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/sim_regf.md)
+[`residual_info_gen`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/residual_info_gen.md),
+[`sim_regf`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/sim_regf.md)
 
 ## Examples
 

@@ -38,7 +38,7 @@ distribution. \*IEEE Transactions on Information Theory\*, 12(1), 75–77.
 
 ## See also
 
-[`residual_info_gen`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/residual_info_gen.md)
+[`residual_info_gen`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/residual_info_gen.md)
 
 ## Examples
 

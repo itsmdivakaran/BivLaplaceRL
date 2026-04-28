@@ -1,10 +1,10 @@
 # Monte-Carlo Simulation Study for the BLT Residual Estimator
 
 Evaluates the performance of
-[`np_blt_residual`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/np_blt_residual.md)
+[`np_blt_residual`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/np_blt_residual.md)
 via repeated simulation from the Gumbel bivariate exponential
 distribution and compares estimates to the closed-form
-[`blt_residual_gumbel`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_residual_gumbel.md)
+[`blt_residual_gumbel`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_residual_gumbel.md)
 values. Returns bias, variance, and mean squared error (MSE).
 
 ## Usage
@@ -62,7 +62,7 @@ Jayalekshmi S., Rajesh G., Nair N.U. (2022), Section 6.
 
 ## See also
 
-[`np_blt_residual`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/np_blt_residual.md)
+[`np_blt_residual`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/np_blt_residual.md)
 
 ## Examples
 

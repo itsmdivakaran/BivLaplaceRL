@@ -42,8 +42,8 @@ Probability\*, 32(1), 202–211.
 
 ## See also
 
-[`residual_info_gen`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/residual_info_gen.md),
-[`shannon_entropy`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/shannon_entropy.md)
+[`residual_info_gen`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/residual_info_gen.md),
+[`shannon_entropy`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/shannon_entropy.md)
 
 ## Examples
 

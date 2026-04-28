@@ -1,3 +1,14 @@
+# BivLaplaceRL 0.2.0
+
+## CRAN submission release
+
+* Fixed CRAN review issues: corrected URLs, removed non-ASCII Unicode characters
+  from Rd files, and updated `.Rbuildignore` exclusions.
+* Added `WORDLIST` for spell-checking.
+* Updated package documentation and metadata.
+
+---
+
 # BivLaplaceRL 0.1.0
 
 ## Initial release

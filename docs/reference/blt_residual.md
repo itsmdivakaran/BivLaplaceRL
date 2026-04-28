@@ -72,9 +72,9 @@ Jayalekshmi S., Rajesh G., Nair N.U. (2022).
 
 ## See also
 
-[`blt_residual_gumbel`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_residual_gumbel.md),
-[`blt_order_residual`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_order_residual.md),
-[`np_blt_residual`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/np_blt_residual.md)
+[`blt_residual_gumbel`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_residual_gumbel.md),
+[`blt_order_residual`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_order_residual.md),
+[`np_blt_residual`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/np_blt_residual.md)
 
 ## Examples
 

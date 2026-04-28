@@ -40,7 +40,7 @@ Jayalekshmi S., Rajesh G., Nair N.U. (2022), Example 3.1.
 
 ## See also
 
-[`blt_residual`](https://maheshdivakaran.github.io/BivLaplaceRL/reference/blt_residual.md)
+[`blt_residual`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/blt_residual.md)
 
 ## Examples
 
