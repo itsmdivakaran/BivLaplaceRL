@@ -73,6 +73,6 @@ residual_info_gen(f, Fb, alpha = 2, t = 0.5)
 
 # Derivative recovers residual entropy
 (residual_info_gen(f, Fb, alpha = 1 + 1e-5, t = 0) -
-  residual_info_gen(f, Fb, alpha = 1, t = 0)) / 1e-5   # ≈ -H(f)
+  residual_info_gen(f, Fb, alpha = 1, t = 0)) / 1e-5   # approx -H(f)
 #> [1] -0.99999
 ```

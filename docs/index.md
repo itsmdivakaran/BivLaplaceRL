@@ -102,7 +102,7 @@ into a single, CRAN-ready package.
 ``` r
 # Development version from GitHub
 # install.packages("devtools")
-devtools::install_github("maheshdivakaran/BivLaplaceRL")
+devtools::install_github("itsmdivakaran/BivLaplaceRL")
 ```
 
 Once on CRAN:
