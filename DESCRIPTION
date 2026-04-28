@@ -1,7 +1,7 @@
 Package: BivLaplaceRL
 Type: Package
 Title: Bivariate Laplace Transforms, Stochastic Orders, and Entropy Measures in Reliability
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     person("Mahesh", "Divakaran",
            email = "imaheshdivakaran@gmail.com",
@@ -40,7 +40,7 @@ Description: Implements methods for bivariate Laplace transforms of residual liv
     exponential, Farlie-Gumbel-Morgenstern (FGM), bivariate power, and Schur-constant
     distributions.  Plotting utilities and a simulation framework for evaluating
     estimator performance are also provided.
-License: GPL-3
+License: GPL-3 + file LICENSE
 URL: https://itsmdivakaran.github.io/BivLaplaceRL/,
     https://github.com/itsmdivakaran/BivLaplaceRL
 BugReports: https://github.com/itsmdivakaran/BivLaplaceRL/issues

@@ -21,7 +21,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/maheshdivakaran/BivLaplaceRL/blob/HEAD/inst/CITATION)
+[`inst/CITATION`](https://github.com/itsmdivakaran/BivLaplaceRL/blob/HEAD/inst/CITATION)
 
 Jayalekshmi S., Rajesh G., Nair N.U. (2022). Bivariate Laplace transform
 of residual lives and their properties. Communications in Statistics -

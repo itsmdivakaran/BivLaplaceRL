@@ -178,7 +178,7 @@ residual_entropy <- function(dens_fn, surv_fn = NULL, t = 0, upper = 100) {
 #'
 #' # Derivative recovers residual entropy
 #' (residual_info_gen(f, Fb, alpha = 1 + 1e-5, t = 0) -
-#'   residual_info_gen(f, Fb, alpha = 1, t = 0)) / 1e-5   # ≈ -H(f)
+#'   residual_info_gen(f, Fb, alpha = 1, t = 0)) / 1e-5   # approx -H(f)
 #'
 #' @references
 #' Smitha S., Rajesh G., Jayalekshmi S. (2024). On residual entropy generating

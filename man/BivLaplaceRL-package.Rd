@@ -71,9 +71,9 @@ distribution. *IEEE Transactions on Information Theory*, 12(1), 75--77.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://maheshdivakaran.github.io/BivLaplaceRL/}
-  \item \url{https://github.com/maheshdivakaran/BivLaplaceRL}
-  \item Report bugs at \url{https://github.com/maheshdivakaran/BivLaplaceRL/issues}
+  \item \url{https://itsmdivakaran.github.io/BivLaplaceRL/}
+  \item \url{https://github.com/itsmdivakaran/BivLaplaceRL}
+  \item Report bugs at \url{https://github.com/itsmdivakaran/BivLaplaceRL/issues}
 }
 
 }

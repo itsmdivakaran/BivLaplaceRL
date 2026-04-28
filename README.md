@@ -2,8 +2,8 @@
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/BivLaplaceRL)](https://CRAN.R-project.org/package=BivLaplaceRL)
-[![R-CMD-check](https://github.com/maheshdivakaran/BivLaplaceRL/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/maheshdivakaran/BivLaplaceRL/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/maheshdivakaran/BivLaplaceRL/branch/main/graph/badge.svg)](https://app.codecov.io/gh/maheshdivakaran/BivLaplaceRL?branch=main)
+[![R-CMD-check](https://github.com/itsmdivakaran/BivLaplaceRL/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/itsmdivakaran/BivLaplaceRL/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/itsmdivakaran/BivLaplaceRL/branch/main/graph/badge.svg)](https://app.codecov.io/gh/itsmdivakaran/BivLaplaceRL?branch=main)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 <!-- badges: end -->
 
@@ -70,7 +70,7 @@ the methods from three research publications into a single, CRAN-ready package.
 ```r
 # Development version from GitHub
 # install.packages("devtools")
-devtools::install_github("maheshdivakaran/BivLaplaceRL")
+devtools::install_github("itsmdivakaran/BivLaplaceRL")
 ```
 
 Once on CRAN:
