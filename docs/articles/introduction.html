@@ -259,9 +259,11 @@ and survival function
 <span></span>
 <span><span class="co"># At t=0: L_X(1, 0) = 1/(1+1) = 0.5</span></span>
 <span><span class="fu"><a href="../reference/lt_residual.html">lt_residual</a></span><span class="op">(</span><span class="va">f</span>, <span class="va">Fb</span>, s <span class="op">=</span> <span class="fl">1</span>, t <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.5</span></span>
 <span></span>
 <span><span class="co"># At t=0.5</span></span>
-<span><span class="fu"><a href="../reference/lt_residual.html">lt_residual</a></span><span class="op">(</span><span class="va">f</span>, <span class="va">Fb</span>, s <span class="op">=</span> <span class="fl">1</span>, t <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/lt_residual.html">lt_residual</a></span><span class="op">(</span><span class="va">f</span>, <span class="va">Fb</span>, s <span class="op">=</span> <span class="fl">1</span>, t <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.3032653</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="hazard-rate-and-mrl">Hazard Rate and MRL<a class="anchor" aria-label="anchor" href="#hazard-rate-and-mrl"></a>
@@ -269,15 +271,19 @@ and survival function
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Exp(1): constant hazard rate = 1</span></span>
 <span><span class="fu"><a href="../reference/hazard_rate.html">hazard_rate</a></span><span class="op">(</span><span class="va">f</span>, <span class="va">Fb</span>, t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1 1 1</span></span>
 <span></span>
 <span><span class="co"># Exp(1): constant MRL = 1 (memoryless)</span></span>
 <span><span class="fu"><a href="../reference/mean_residual.html">mean_residual</a></span><span class="op">(</span><span class="va">Fb</span>, t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1 1 1 1</span></span>
 <span></span>
 <span><span class="co"># Gamma(2,1): increasing hazard, decreasing MRL</span></span>
 <span><span class="va">fG</span>  <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html" class="external-link">dgamma</a></span><span class="op">(</span><span class="va">x</span>, shape <span class="op">=</span> <span class="fl">2</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">FbG</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html" class="external-link">pgamma</a></span><span class="op">(</span><span class="va">x</span>, shape <span class="op">=</span> <span class="fl">2</span>, rate <span class="op">=</span> <span class="fl">1</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/hazard_rate.html">hazard_rate</a></span><span class="op">(</span><span class="va">fG</span>, <span class="va">FbG</span>, t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/mean_residual.html">mean_residual</a></span><span class="op">(</span><span class="va">FbG</span>, t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 0.3333333 0.5000000 0.6666667</span></span>
+<span><span class="fu"><a href="../reference/mean_residual.html">mean_residual</a></span><span class="op">(</span><span class="va">FbG</span>, t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2.000000 1.666667 1.500000</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="nonparametric-estimation-1">Nonparametric Estimation<a class="anchor" aria-label="anchor" href="#nonparametric-estimation-1"></a>
@@ -288,9 +294,11 @@ and survival function
 <span></span>
 <span><span class="co"># Nonparametric estimate at s=1, t=0: true value = 0.5</span></span>
 <span><span class="fu"><a href="../reference/np_lt_residual.html">np_lt_residual</a></span><span class="op">(</span><span class="va">x</span>, s <span class="op">=</span> <span class="fl">1</span>, t <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.4948948</span></span>
 <span></span>
 <span><span class="co"># At t=0.5</span></span>
-<span><span class="fu"><a href="../reference/np_lt_residual.html">np_lt_residual</a></span><span class="op">(</span><span class="va">x</span>, s <span class="op">=</span> <span class="fl">1</span>, t <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/np_lt_residual.html">np_lt_residual</a></span><span class="op">(</span><span class="va">x</span>, s <span class="op">=</span> <span class="fl">1</span>, t <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.3142664</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="univariate-stochastic-orders">Univariate Stochastic Orders<a class="anchor" aria-label="anchor" href="#univariate-stochastic-orders"></a>
@@ -304,12 +312,15 @@ and survival function
 <span><span class="co"># LT-rl order: Exp(1) &lt;=_Lt-rl Exp(2)?</span></span>
 <span><span class="fu"><a href="../reference/lt_rl_order.html">lt_rl_order</a></span><span class="op">(</span><span class="va">f1</span>, <span class="va">Fb1</span>, <span class="va">f2</span>, <span class="va">Fb2</span>,</span>
 <span>            s_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, t_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">order_holds</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
 <span></span>
 <span><span class="co"># Hazard rate order: Exp(1) &lt;=_hr Exp(2)?</span></span>
 <span><span class="fu"><a href="../reference/hr_order.html">hr_order</a></span><span class="op">(</span><span class="va">f1</span>, <span class="va">Fb1</span>, <span class="va">f2</span>, <span class="va">Fb2</span>, t_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">order_holds</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
 <span></span>
 <span><span class="co"># MRL order: Exp(2) &lt;=_mrl Exp(1)?</span></span>
-<span><span class="fu"><a href="../reference/mrl_order.html">mrl_order</a></span><span class="op">(</span><span class="va">Fb2</span>, <span class="va">Fb1</span>, t_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">order_holds</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/mrl_order.html">mrl_order</a></span><span class="op">(</span><span class="va">Fb2</span>, <span class="va">Fb1</span>, t_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">order_holds</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
