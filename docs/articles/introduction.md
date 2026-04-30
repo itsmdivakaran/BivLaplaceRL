@@ -179,11 +179,9 @@ Fb <- function(x) pexp(x, 1, lower.tail = FALSE)
 
 # At t=0: L_X(1, 0) = 1/(1+1) = 0.5
 lt_residual(f, Fb, s = 1, t = 0)
-#> [1] 0.5
 
 # At t=0.5
 lt_residual(f, Fb, s = 1, t = 0.5)
-#> [1] 0.3032653
 ```
 
 ### Hazard Rate and MRL
@@ -191,19 +189,15 @@ lt_residual(f, Fb, s = 1, t = 0.5)
 ``` r
 # Exp(1): constant hazard rate = 1
 hazard_rate(f, Fb, t = c(0.5, 1, 2))
-#> [1] 1 1 1
 
 # Exp(1): constant MRL = 1 (memoryless)
 mean_residual(Fb, t = c(0, 0.5, 1, 2))
-#> [1] 1 1 1 1
 
 # Gamma(2,1): increasing hazard, decreasing MRL
 fG  <- function(x) dgamma(x, shape = 2, rate = 1)
 FbG <- function(x) pgamma(x, shape = 2, rate = 1, lower.tail = FALSE)
 hazard_rate(fG, FbG, t = c(0.5, 1, 2))
-#> [1] 0.3333333 0.5000000 0.6666667
 mean_residual(FbG, t = c(0, 0.5, 1))
-#> [1] 2.000000 1.666667 1.500000
 ```
 
 ### Nonparametric Estimation
@@ -214,11 +208,9 @@ x <- rexp(500, rate = 1)
 
 # Nonparametric estimate at s=1, t=0: true value = 0.5
 np_lt_residual(x, s = 1, t = 0)
-#> [1] 0.4948948
 
 # At t=0.5
 np_lt_residual(x, s = 1, t = 0.5)
-#> [1] 0.3142664
 ```
 
 ### Univariate Stochastic Orders
@@ -232,15 +224,12 @@ Fb2 <- function(x) pexp(x, 2, lower.tail = FALSE)
 # LT-rl order: Exp(1) <=_Lt-rl Exp(2)?
 lt_rl_order(f1, Fb1, f2, Fb2,
             s_grid = c(0.5, 1, 2), t_grid = c(0, 0.5, 1))$order_holds
-#> [1] TRUE
 
 # Hazard rate order: Exp(1) <=_hr Exp(2)?
 hr_order(f1, Fb1, f2, Fb2, t_grid = c(0.5, 1, 2))$order_holds
-#> [1] TRUE
 
 # MRL order: Exp(2) <=_mrl Exp(1)?
 mrl_order(Fb2, Fb1, t_grid = c(0, 0.5, 1, 2))$order_holds
-#> [1] TRUE
 ```
 
 ## Entropy and Information Generating Functions

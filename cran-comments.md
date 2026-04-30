@@ -1,4 +1,4 @@
-## Resubmission (0.3.0)
+## Resubmission (1.0.0)
 
 * Added univariate Laplace transform of residual life (`lt_residual()`),
   hazard rate (`hazard_rate()`), mean residual life (`mean_residual()`),
@@ -26,7 +26,7 @@
   FGM, NBUHR, NWUHR, Golomb's, Farlie, Morgenstern, Schur, Jayalekshmi,
   Rajesh, rl, Lt) are either domain-specific abbreviations for reliability and
   stochastic order concepts, or surnames of cited authors. They are all spelled
-  correctly.
+  correctly. These words have been added to `inst/WORDLIST`.
 
 * "unable to verify current time": Network connectivity issue on the checking
   machine; not a package problem.

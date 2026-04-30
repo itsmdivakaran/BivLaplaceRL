@@ -16,6 +16,10 @@ knitr::opts_chunk$set(
   fig.width = 6,
   fig.height = 4
 )
+uni_fns_available <- tryCatch(
+  exists("lt_residual", asNamespace("BivLaplaceRL")),
+  error = function(e) FALSE
+)
 ```
 
 ## Overview
@@ -149,7 +153,7 @@ survival function $\bar{F}$:
 $$L_X(s,t) = E[e^{-sX} \mid X > t]
   = \frac{1}{\bar{F}(t)}\int_t^\infty e^{-sx} f(x)\,dx.$$
 
-```{r uni_lt}
+```{r uni_lt, eval = uni_fns_available}
 f  <- function(x) dexp(x, 1)
 Fb <- function(x) pexp(x, 1, lower.tail = FALSE)
 
@@ -162,7 +166,7 @@ lt_residual(f, Fb, s = 1, t = 0.5)
 
 ### Hazard Rate and MRL
 
-```{r uni_hr_mrl}
+```{r uni_hr_mrl, eval = uni_fns_available}
 # Exp(1): constant hazard rate = 1
 hazard_rate(f, Fb, t = c(0.5, 1, 2))
 
@@ -178,7 +182,7 @@ mean_residual(FbG, t = c(0, 0.5, 1))
 
 ### Nonparametric Estimation
 
-```{r uni_np}
+```{r uni_np, eval = uni_fns_available}
 set.seed(7)
 x <- rexp(500, rate = 1)
 
@@ -191,7 +195,7 @@ np_lt_residual(x, s = 1, t = 0.5)
 
 ### Univariate Stochastic Orders
 
-```{r uni_orders}
+```{r uni_orders, eval = uni_fns_available}
 f1  <- function(x) dexp(x, 1)
 Fb1 <- function(x) pexp(x, 1, lower.tail = FALSE)
 f2  <- function(x) dexp(x, 2)
