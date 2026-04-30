@@ -1,3 +1,20 @@
+# BivLaplaceRL 1.0.0
+
+## New features
+
+* Added univariate residual life analysis:
+  - `lt_residual()` — Laplace transform of residual life E[e^{-sX} | X > t]
+  - `hazard_rate()` — hazard rate h(t) = f(t)/S(t)
+  - `mean_residual()` — mean residual life m(t) = E[X-t | X>t]
+  - `np_lt_residual()` — nonparametric estimator
+
+* Added three univariate stochastic order checks:
+  - `lt_rl_order()` — Laplace transform order of residual lives
+  - `hr_order()` — hazard rate order
+  - `mrl_order()` — mean residual life order
+
+---
+
 # BivLaplaceRL 0.2.0
 
 ## CRAN submission release
@@ -34,12 +51,10 @@
   `biv_wrhr_order()`, `biv_wrmrl_order()`.
 
 * Added entropy and information generating functions:
-  `shannon_entropy()`, `info_gen_function()`, `residual_entropy()`,
-  `residual_info_gen()`, `regf_profile()`, `regf_characterise()`,
-  `np_residual_info_gen()`, `sim_regf()`.
+  `shannon_entropy()`, `info_gen_function()`.
 
 * Added parametric distributions:
   Gumbel bivariate exponential, FGM, bivariate power, Schur-constant.
 
 * Added plotting utilities:
-  `plot_blt_residual()`, `plot_blt_reversed()`, `plot_regf()`.
+  `plot_blt_residual()`, `plot_blt_reversed()`.

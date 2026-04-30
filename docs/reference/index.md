@@ -69,7 +69,22 @@ distributions.
 - [`biv_rmrl()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_rmrl.md)
   : Bivariate Reversed Mean Residual Life Function
 
-## Stochastic Ordering
+## Univariate Residual Life Analysis
+
+Univariate Laplace transform of residual life , hazard rate , mean
+residual life , and a nonparametric estimator.
+
+- [`lt_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/lt_residual.md)
+  : Univariate Laplace Transform of Residual Life
+- [`hazard_rate()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/hazard_rate.md)
+  : Univariate Hazard Rate Function
+- [`mean_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/mean_residual.md)
+  : Univariate Mean Residual Life
+- [`np_lt_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/np_lt_residual.md)
+  : Nonparametric Estimator for the Univariate Laplace Transform of
+  Residual Life
+
+## Stochastic Ordering (Bivariate)
 
 Seven bivariate stochastic order checks: BLt-rl, BLt-Rrl, weak bivariate
 hazard rate, MRL, bivariate relative MRL, reversed hazard rate, and
@@ -92,43 +107,37 @@ diagnostic values.
 - [`biv_wrmrl_order()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/biv_wrmrl_order.md)
   : Weak Bivariate Reversed Mean Residual Life Order
 
+## Stochastic Ordering (Univariate)
+
+Three univariate stochastic order checks based on the Laplace transform
+of residual life, hazard rate, and mean residual life.
+
+- [`lt_rl_order()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/lt_rl_order.md)
+  : Univariate Laplace Transform Order of Residual Lives
+- [`hr_order()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/hr_order.md)
+  : Hazard Rate Order
+- [`mrl_order()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/mrl_order.md)
+  : Mean Residual Life Order
+
 ## Entropy and Information Generating Functions
 
-Shannon entropy, Golomb information generating function, dynamic
-residual entropy (Ebrahimi & Pellerey 1995), and the residual entropy
-generating function (REGF) introduced in Smitha, Rajesh & Jayalekshmi
-(2024, *JISA* 62(1)). Includes nonparametric estimation and a
-Monte-Carlo simulator.
+Shannon differential entropy and Golomb’s (1966) information generating
+function for non-negative continuous random variables.
 
 - [`shannon_entropy()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/shannon_entropy.md)
   : Shannon Differential Entropy
 - [`info_gen_function()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/info_gen_function.md)
   : Golomb Information Generating Function
-- [`residual_entropy()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/residual_entropy.md)
-  : Residual Entropy Function
-- [`residual_info_gen()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/residual_info_gen.md)
-  : Residual Entropy Generating Function (REGF)
-- [`regf_profile()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/regf_profile.md)
-  : REGF Profile Over Alpha
-- [`regf_characterise()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/regf_characterise.md)
-  : Characterise a Distribution via the REGF
-- [`np_residual_info_gen()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/np_residual_info_gen.md)
-  : Nonparametric Estimator for the Residual Entropy Generating Function
-- [`sim_regf()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/sim_regf.md)
-  : Monte-Carlo Simulation for the REGF Nonparametric Estimator
 
 ## Plotting Utilities
 
 Convenience wrappers that produce ready-made plots for the BLT of
-residual lives, the BLT of reversed residual lives, and the REGF
-profile.
+residual lives and the BLT of reversed residual lives.
 
 - [`plot_blt_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/plot_blt_residual.md)
   : Plot Bivariate Laplace Transform of Residual Lives
 - [`plot_blt_reversed()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/plot_blt_reversed.md)
   : Plot Bivariate Laplace Transform of Reversed Residual Lives
-- [`plot_regf()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/plot_regf.md)
-  : Plot Residual Entropy Generating Function
 
 ## Package
 

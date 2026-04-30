@@ -2,14 +2,14 @@
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/BivLaplaceRL)](https://CRAN.R-project.org/package=BivLaplaceRL)
-[![R-CMD-check](https://github.com/maheshdivakaran/BivLaplaceRL/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/maheshdivakaran/BivLaplaceRL/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/maheshdivakaran/BivLaplaceRL/branch/main/graph/badge.svg)](https://app.codecov.io/gh/maheshdivakaran/BivLaplaceRL?branch=main)
+[![R-CMD-check](https://github.com/itsmdivakaran/BivLaplaceRL/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/itsmdivakaran/BivLaplaceRL/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/itsmdivakaran/BivLaplaceRL/branch/main/graph/badge.svg)](https://app.codecov.io/gh/itsmdivakaran/BivLaplaceRL?branch=main)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 <!-- badges: end -->
 
-**BivLaplaceRL** is an R package for bivariate Laplace transforms, stochastic
-ordering concepts, and entropy measures in reliability analysis.  It consolidates
-the methods from three research publications into a single, CRAN-ready package.
+**BivLaplaceRL** is an R package for bivariate and univariate Laplace transforms
+of residual lives, stochastic ordering concepts, and entropy measures in
+reliability analysis.
 
 ## Research Basis
 
@@ -17,7 +17,6 @@ the methods from three research publications into a single, CRAN-ready package.
 |-------|---------|---------|
 | Bivariate Laplace transform of residual lives and their properties | *Communications in Statistics — Theory and Methods* (2022) | Jayalekshmi S., Rajesh G., Nair N.U. |
 | Bivariate Laplace transform order and ordering of reversed residual lives | *Int. J. Reliability, Quality and Safety Engineering* | Jayalekshmi S., Rajesh G. |
-| On residual entropy generating function | *Journal of the Indian Statistical Association* 62(1):81–93 (2024) | Smitha S., Rajesh G., Jayalekshmi S. |
 
 ## Features
 
@@ -43,7 +42,13 @@ the methods from three research publications into a single, CRAN-ready package.
 - `biv_rhazard_gradient()` — reversed hazard gradient
 - `biv_rmrl()` — reversed mean residual life
 
-### Stochastic Orders
+### Univariate Residual Life Analysis
+- `lt_residual()` — LT of residual life: E[e^{-sX} | X > t]
+- `hazard_rate()` — hazard rate h(t) = f(t)/S(t)
+- `mean_residual()` — mean residual life m(t) = E[X-t | X>t]
+- `np_lt_residual()` — nonparametric estimator
+
+### Stochastic Orders (Bivariate)
 - `blt_order_residual()` — BLt-rl order
 - `blt_order_reversed()` — BLt-Rrl order
 - `biv_whr_order()` — weak bivariate hazard rate order
@@ -52,30 +57,29 @@ the methods from three research publications into a single, CRAN-ready package.
 - `biv_wrhr_order()` — weak bivariate reversed hazard rate order
 - `biv_wrmrl_order()` — weak bivariate reversed MRL order
 
+### Stochastic Orders (Univariate)
+- `lt_rl_order()` — Lt-rl order: L_X(s,t) <= L_Y(s,t) for all s, t
+- `hr_order()` — hazard rate order: h_X(t) <= h_Y(t) for all t
+- `mrl_order()` — MRL order: m_X(t) <= m_Y(t) for all t
+
 ### Entropy Measures
 - `shannon_entropy()` — Shannon differential entropy
 - `info_gen_function()` — Golomb information generating function
-- `residual_entropy()` — dynamic residual entropy (Ebrahimi & Pellerey 1995)
-- `residual_info_gen()` — residual entropy generating function (REGF)
-- `regf_profile()` — REGF profile over α
-- `regf_characterise()` — distribution characterisation via REGF
-- `np_residual_info_gen()` — nonparametric REGF estimator
-- `sim_regf()` — Monte-Carlo simulation for REGF estimator
 
 ### Plotting
-- `plot_blt_residual()`, `plot_blt_reversed()`, `plot_regf()`
+- `plot_blt_residual()`, `plot_blt_reversed()`
 
 ## Installation
 
 ```r
-# Development version from GitHub
-# install.packages("devtools")
-devtools::install_github("maheshdivakaran/BivLaplaceRL")
+# Install from CRAN
+install.packages("BivLaplaceRL")
 ```
 
-Once on CRAN:
 ```r
-install.packages("BivLaplaceRL")
+# Development version from GitHub
+# install.packages("devtools")
+devtools::install_github("itsmdivakaran/BivLaplaceRL")
 ```
 
 ## Quick Start
@@ -90,18 +94,14 @@ dat <- rgumbel_biv(500, k1 = 1, k2 = 1, theta = 0.5)
 # 2. Nonparametric estimate of BLT of residual lives
 np_blt_residual(dat, s1 = 1, s2 = 1, t1 = 0.3, t2 = 0.3)
 
-# 3. Compare with closed-form
-blt_residual_gumbel(s1 = 1, s2 = 1, t1 = 0.3, t2 = 0.3, k1 = 1, k2 = 1, theta = 0.5)
+# 3. Univariate LT of residual life for Exp(1)
+f  <- function(x) dexp(x, 1)
+Fb <- function(x) pexp(x, 1, lower.tail = FALSE)
+lt_residual(f, Fb, s = 1, t = 0.5)
 
-# 4. Check weak bivariate hazard rate order
-sX <- function(x1, x2) sgumbel_biv(x1, x2, k1 = 2, k2 = 2)
-sY <- function(x1, x2) sgumbel_biv(x1, x2, k1 = 1, k2 = 1)
-biv_whr_order(sX, sY)$order_holds
-
-# 5. Residual Entropy Generating Function
-f  <- function(x) dexp(x, rate = 1)
-Fb <- function(x) pexp(x, rate = 1, lower.tail = FALSE)
-residual_info_gen(f, Fb, alpha = 2, t = 0.5)
+# 4. Hazard rate and MRL
+hazard_rate(f, Fb, t = c(0.5, 1, 2))
+mean_residual(Fb, t = c(0, 0.5, 1, 2))
 ```
 
 ## Authors
@@ -113,9 +113,6 @@ imaheshdivakaran@gmail.com
 **S. Jayalekshmi**, **G. Rajesh**, **N. Unnikrishnan Nair**
 Department of Statistics, Cochin University of Science and Technology
 
-**Smitha S.**
-K. E. College, Mannanam
-
 ## References
 
 Jayalekshmi S., Rajesh G., Nair N.U. (2022). Bivariate Laplace transform of
@@ -126,8 +123,8 @@ Jayalekshmi S., Rajesh G. Bivariate Laplace transform order and ordering of
 reversed residual lives. *International Journal of Reliability, Quality and
 Safety Engineering*.
 
-Smitha S., Rajesh G., Jayalekshmi S. (2024). On residual entropy generating
-function. *Journal of the Indian Statistical Association*, 62(1), 81–93.
+Belzunce F., Ortega E., Ruiz J.M. (1999). The Laplace order and ordering of
+residual lives. *Statistics & Probability Letters*, 42(2), 145--156.
 
 ## License
 

@@ -20,7 +20,7 @@
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Introduction to BivLaplaceRL">
-<meta name="description" content="R package for bivariate Laplace transforms, stochastic orders, and entropy measures in reliability analysis.">
+<meta name="description" content="R package for bivariate and univariate Laplace transforms, stochastic orders, and entropy measures in reliability analysis.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -30,7 +30,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">BivLaplaceRL</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,7 +70,7 @@
                         <h4 data-toc-skip class="author">Mahesh
 Divakaran</h4>
             
-            <h4 data-toc-skip class="date">2026-04-28</h4>
+            <h4 data-toc-skip class="date">2026-04-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/itsmdivakaran/BivLaplaceRL/blob/HEAD/vignettes/introduction.Rmd" class="external-link"><code>vignettes/introduction.Rmd</code></a></small>
       <div class="d-none name"><code>introduction.Rmd</code></div>
@@ -82,15 +82,14 @@ Divakaran</h4>
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p><strong>BivLaplaceRL</strong> is an R package that implements
-statistical methods from three research papers on bivariate Laplace
-transforms and entropy measures in reliability theory:</p>
+statistical methods from two research papers on bivariate Laplace
+transforms in reliability theory, together with a set of univariate
+residual life tools:</p>
 <ol style="list-style-type: decimal">
 <li>Bivariate Laplace transform of residual lives (Jayalekshmi, Rajesh
 &amp; Nair, 2022)</li>
 <li>Bivariate Laplace transform order of reversed residual lives
 (Jayalekshmi &amp; Rajesh)</li>
-<li>Residual entropy generating function (Smitha, Rajesh &amp;
-Jayalekshmi, 2024)</li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://itsmdivakaran.github.io/BivLaplaceRL/">BivLaplaceRL</a></span><span class="op">)</span></span></code></pre></div>
@@ -104,8 +103,7 @@ reliability modelling.</p>
 <h3 id="gumbel-bivariate-exponential">Gumbel Bivariate Exponential<a class="anchor" aria-label="anchor" href="#gumbel-bivariate-exponential"></a>
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Simulate 200 observations</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gumbel_biv.html">rgumbel_biv</a></span><span class="op">(</span><span class="fl">200</span>, k1 <span class="op">=</span> <span class="fl">1</span>, k2 <span class="op">=</span> <span class="fl">1.5</span>, theta <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span>
 <span><span class="co">#&gt;             X1          X2</span></span>
@@ -115,8 +113,6 @@ reliability modelling.</p>
 <span><span class="co">#&gt; [4,] 0.0381919 0.294297662</span></span>
 <span><span class="co">#&gt; [5,] 0.4731766 0.305411898</span></span>
 <span><span class="co">#&gt; [6,] 1.4636271 0.000850079</span></span>
-<span></span>
-<span><span class="co"># Survival function at a point</span></span>
 <span><span class="fu"><a href="../reference/gumbel_biv.html">sgumbel_biv</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, k1 <span class="op">=</span> <span class="fl">1</span>, k2 <span class="op">=</span> <span class="fl">1.5</span>, theta <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.06081006</span></span></code></pre></div>
 </div>
@@ -126,14 +122,6 @@ reliability modelling.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">dat_fgm</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fgm_biv.html">rfgm_biv</a></span><span class="op">(</span><span class="fl">100</span>, theta <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">dat_fgm</span><span class="op">)</span></span>
-<span><span class="co">#&gt;             X1        X2</span></span>
-<span><span class="co">#&gt; [1,] 0.2655087 0.4050251</span></span>
-<span><span class="co">#&gt; [2,] 0.3721239 0.4433111</span></span>
-<span><span class="co">#&gt; [3,] 0.5728534 0.5392890</span></span>
-<span><span class="co">#&gt; [4,] 0.9082078 0.8448911</span></span>
-<span><span class="co">#&gt; [5,] 0.2016819 0.3851136</span></span>
-<span><span class="co">#&gt; [6,] 0.8983897 0.2511579</span></span>
 <span><span class="fu"><a href="../reference/fgm_biv.html">pfgm_biv</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">0.6</span>, theta <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.33</span></span></code></pre></div>
 </div>
@@ -143,8 +131,7 @@ reliability modelling.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">dat_sc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/schur_biv.html">rschur_biv</a></span><span class="op">(</span><span class="fl">100</span>, lambda <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="co"># Marginals are standard exponential</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">dat_sc</span><span class="op">)</span><span class="op">)</span>  <span class="co"># T = X1 + X2 ~ Exp(lambda)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">dat_sc</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
 <span><span class="co">#&gt; 0.00394 0.34161 0.82448 1.00673 1.29280 4.86222</span></span></code></pre></div>
 </div>
@@ -155,7 +142,6 @@ reliability modelling.</p>
 <div class="section level3">
 <h3 id="closed-form-gumbel-distribution">Closed-Form (Gumbel Distribution)<a class="anchor" aria-label="anchor" href="#closed-form-gumbel-distribution"></a>
 </h3>
-<p>The key result from Jayalekshmi et al. (2022) is:</p>
 <p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>L</mi><msub><mi>X</mi><mrow><msub><mi>t</mi><mn>1</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>t</mi><mn>2</mn></msub></mrow></msub><mo>*</mo></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>s</mi><mn>1</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mrow><msub><mi>k</mi><mn>1</mn></msub><mo>+</mo><msub><mi>s</mi><mn>1</mn></msub><mo>+</mo><mi>θ</mi><msub><mi>t</mi><mn>2</mn></msub></mrow></mfrac><mo>,</mo><mspace width="1.0em"></mspace><msubsup><mi>L</mi><msub><mi>X</mi><mrow><msub><mi>t</mi><mn>2</mn></msub><mo stretchy="false" form="prefix">|</mo><msub><mi>t</mi><mn>1</mn></msub></mrow></msub><mo>*</mo></msubsup><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>s</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mrow><msub><mi>k</mi><mn>2</mn></msub><mo>+</mo><msub><mi>s</mi><mn>2</mn></msub><mo>+</mo><mi>θ</mi><msub><mi>t</mi><mn>1</mn></msub></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">L^*_{X_{t_1|t_2}}(s_1) = \frac{1}{k_1 + s_1 + \theta t_2}, \quad
   L^*_{X_{t_2|t_1}}(s_2) = \frac{1}{k_2 + s_2 + \theta t_1}.</annotation></semantics></math></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -167,7 +153,6 @@ reliability modelling.</p>
 <div class="section level3">
 <h3 id="numerical-computation">Numerical Computation<a class="anchor" aria-label="anchor" href="#numerical-computation"></a>
 </h3>
-<p>For a user-supplied survival function:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_surv</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">x1</span> <span class="op">-</span> <span class="va">x2</span> <span class="op">-</span> <span class="fl">0.3</span> <span class="op">*</span> <span class="va">x1</span> <span class="op">*</span> <span class="va">x2</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/blt_residual.html">blt_residual</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="fl">1</span>, s2 <span class="op">=</span> <span class="fl">1</span>, t1 <span class="op">=</span> <span class="fl">0.5</span>, t2 <span class="op">=</span> <span class="fl">0.5</span>,</span>
@@ -205,12 +190,9 @@ reliability modelling.</p>
 <h2 id="bivariate-hazard-gradient-and-mrl">Bivariate Hazard Gradient and MRL<a class="anchor" aria-label="anchor" href="#bivariate-hazard-gradient-and-mrl"></a>
 </h2>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Hazard gradient</span></span>
-<span><span class="fu"><a href="../reference/biv_hazard_gradient.html">biv_hazard_gradient</a></span><span class="op">(</span>t1 <span class="op">=</span> <span class="fl">1</span>, t2 <span class="op">=</span> <span class="fl">1</span>, k1 <span class="op">=</span> <span class="fl">1</span>, k2 <span class="op">=</span> <span class="fl">1</span>, theta <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/biv_hazard_gradient.html">biv_hazard_gradient</a></span><span class="op">(</span>t1 <span class="op">=</span> <span class="fl">1</span>, t2 <span class="op">=</span> <span class="fl">1</span>, k1 <span class="op">=</span> <span class="fl">1</span>, k2 <span class="op">=</span> <span class="fl">1</span>, theta <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  h1  h2 </span></span>
 <span><span class="co">#&gt; 1.3 1.3</span></span>
-<span></span>
-<span><span class="co"># Mean residual life</span></span>
 <span><span class="fu"><a href="../reference/biv_mean_residual.html">biv_mean_residual</a></span><span class="op">(</span>t1 <span class="op">=</span> <span class="fl">0.5</span>, t2 <span class="op">=</span> <span class="fl">0.5</span>, k1 <span class="op">=</span> <span class="fl">1</span>, k2 <span class="op">=</span> <span class="fl">1</span>, theta <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span><span class="co">#&gt; m1 m2 </span></span>
 <span><span class="co">#&gt;  1  1</span></span></code></pre></div>
@@ -230,128 +212,128 @@ reliability modelling.</p>
 <h2 id="bivariate-laplace-transform-of-reversed-residual-lives">Bivariate Laplace Transform of Reversed Residual Lives<a class="anchor" aria-label="anchor" href="#bivariate-laplace-transform-of-reversed-residual-lives"></a>
 </h2>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># FGM distribution</span></span>
-<span><span class="fu"><a href="../reference/blt_reversed.html">blt_reversed</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="fl">1</span>, s2 <span class="op">=</span> <span class="fl">1</span>, t1 <span class="op">=</span> <span class="fl">0.5</span>, t2 <span class="op">=</span> <span class="fl">0.5</span>, theta <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/blt_reversed.html">blt_reversed</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="fl">1</span>, s2 <span class="op">=</span> <span class="fl">1</span>, t1 <span class="op">=</span> <span class="fl">0.5</span>, t2 <span class="op">=</span> <span class="fl">0.5</span>, theta <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       L1       L2 </span></span>
 <span><span class="co">#&gt; 0.791495 0.791495</span></span>
-<span></span>
-<span><span class="co"># G form (used for characterisation)</span></span>
-<span><span class="fu"><a href="../reference/blt_reversed.html">blt_reversed</a></span><span class="op">(</span>s1 <span class="op">=</span> <span class="fl">1</span>, s2 <span class="op">=</span> <span class="fl">1</span>, t1 <span class="op">=</span> <span class="fl">0.5</span>, t2 <span class="op">=</span> <span class="fl">0.5</span>, theta <span class="op">=</span> <span class="fl">0.3</span>, g_form <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;        G1        G2 </span></span>
-<span><span class="co">#&gt; 0.3049546 0.3049546</span></span>
-<span></span>
-<span><span class="co"># Reversed hazard gradient</span></span>
 <span><span class="fu"><a href="../reference/biv_rhazard_gradient.html">biv_rhazard_gradient</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="fl">0.5</span>, x2 <span class="op">=</span> <span class="fl">0.5</span>, theta <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      rh1      rh2 </span></span>
 <span><span class="co">#&gt; 1.860465 1.860465</span></span>
-<span></span>
-<span><span class="co"># Reversed MRL</span></span>
 <span><span class="fu"><a href="../reference/biv_rmrl.html">biv_rmrl</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="fl">0.5</span>, x2 <span class="op">=</span> <span class="fl">0.5</span>, theta <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       m1       m2 </span></span>
 <span><span class="co">#&gt; 0.255814 0.255814</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="stochastic-orders">Stochastic Orders<a class="anchor" aria-label="anchor" href="#stochastic-orders"></a>
+<h2 id="bivariate-stochastic-orders">Bivariate Stochastic Orders<a class="anchor" aria-label="anchor" href="#bivariate-stochastic-orders"></a>
 </h2>
-<div class="section level3">
-<h3 id="blt-rl-order">BLt-rl Order<a class="anchor" aria-label="anchor" href="#blt-rl-order"></a>
-</h3>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sX</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span><span class="op">)</span> <span class="fu"><a href="../reference/gumbel_biv.html">sgumbel_biv</a></span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span>, k1 <span class="op">=</span> <span class="fl">1</span>, k2 <span class="op">=</span> <span class="fl">1</span>, theta <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span>
 <span><span class="va">sY</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span><span class="op">)</span> <span class="fu"><a href="../reference/gumbel_biv.html">sgumbel_biv</a></span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span>, k1 <span class="op">=</span> <span class="fl">2</span>, k2 <span class="op">=</span> <span class="fl">2</span>, theta <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/blt_order_residual.html">blt_order_residual</a></span><span class="op">(</span><span class="va">sX</span>, <span class="va">sY</span>, s1 <span class="op">=</span> <span class="fl">1</span>, s2 <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>                          t1_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span>, t2_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"X &lt;=_BLt-rl Y:"</span>, <span class="va">res</span><span class="op">$</span><span class="va">order_holds</span>, <span class="st">"\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; X &lt;=_BLt-rl Y: TRUE</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="weak-bivariate-hazard-rate-order">Weak Bivariate Hazard Rate Order<a class="anchor" aria-label="anchor" href="#weak-bivariate-hazard-rate-order"></a>
-</h3>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/biv_whr_order.html">biv_whr_order</a></span><span class="op">(</span><span class="va">sX</span>, <span class="va">sY</span>, t1_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span>, t2_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"X &lt;=_whr Y:"</span>, <span class="va">res</span><span class="op">$</span><span class="va">order_holds</span>, <span class="st">"\n"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; X &lt;=_BLt-rl Y: TRUE</span></span>
+<span></span>
+<span><span class="va">res2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/biv_whr_order.html">biv_whr_order</a></span><span class="op">(</span><span class="va">sX</span>, <span class="va">sY</span>, t1_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span>, t2_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span><span class="st">"X &lt;=_whr Y:"</span>, <span class="va">res2</span><span class="op">$</span><span class="va">order_holds</span>, <span class="st">"\n"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; X &lt;=_whr Y: FALSE</span></span></code></pre></div>
 </div>
-</div>
 <div class="section level2">
-<h2 id="residual-entropy-generating-function">Residual Entropy Generating Function<a class="anchor" aria-label="anchor" href="#residual-entropy-generating-function"></a>
+<h2 id="univariate-residual-life-analysis">Univariate Residual Life Analysis<a class="anchor" aria-label="anchor" href="#univariate-residual-life-analysis"></a>
 </h2>
+<p>The package now provides a complete set of univariate residual life
+tools that complement the bivariate framework.</p>
 <div class="section level3">
-<h3 id="shannon-entropy-and-golomb-igf">Shannon Entropy and Golomb IGF<a class="anchor" aria-label="anchor" href="#shannon-entropy-and-golomb-igf"></a>
+<h3 id="laplace-transform-of-residual-life">Laplace Transform of Residual Life<a class="anchor" aria-label="anchor" href="#laplace-transform-of-residual-life"></a>
 </h3>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Shannon entropy of Exp(1) = 1</span></span>
-<span><span class="fu"><a href="../reference/shannon_entropy.html">shannon_entropy</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">dexp</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 1</span></span>
-<span></span>
-<span><span class="co"># Golomb IGF of Exp(1) at alpha=2: lambda/2 = 0.5</span></span>
-<span><span class="fu"><a href="../reference/info_gen_function.html">info_gen_function</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">dexp</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.5</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="dynamic-regf">Dynamic REGF<a class="anchor" aria-label="anchor" href="#dynamic-regf"></a>
-</h3>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<p>For a non-negative continuous random variable
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>X</mi><annotation encoding="application/x-tex">X</annotation></semantics></math>
+with density
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+and survival function
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>F</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{F}</annotation></semantics></math>:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>L</mi><mi>X</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo>,</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>E</mi><mrow><mo stretchy="true" form="prefix">[</mo><msup><mi>e</mi><mrow><mi>−</mi><mi>s</mi><mi>X</mi></mrow></msup><mo>∣</mo><mi>X</mi><mo>&gt;</mo><mi>t</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo>=</mo><mfrac><mn>1</mn><mrow><mover><mi>F</mi><mo accent="true">‾</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow></mfrac><msubsup><mo>∫</mo><mi>t</mi><mi>∞</mi></msubsup><msup><mi>e</mi><mrow><mi>−</mi><mi>s</mi><mi>x</mi></mrow></msup><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>x</mi><mo stretchy="true" form="postfix">)</mo></mrow><mspace width="0.167em"></mspace><mi>d</mi><mi>x</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">L_X(s,t) = E[e^{-sX} \mid X &gt; t]
+  = \frac{1}{\bar{F}(t)}\int_t^\infty e^{-sx} f(x)\,dx.</annotation></semantics></math></p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">f</span>  <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">dexp</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">Fb</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">pexp</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># REGF at various t values</span></span>
-<span><span class="va">t_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">0.5</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">t_vals</span>, <span class="kw">function</span><span class="op">(</span><span class="va">t</span><span class="op">)</span> <span class="fu"><a href="../reference/residual_info_gen.html">residual_info_gen</a></span><span class="op">(</span><span class="va">f</span>, <span class="va">Fb</span>, alpha <span class="op">=</span> <span class="fl">2</span>, t <span class="op">=</span> <span class="va">t</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.5 0.5 0.5 0.5 0.5</span></span></code></pre></div>
+<span><span class="co"># At t=0: L_X(1, 0) = 1/(1+1) = 0.5</span></span>
+<span><span class="fu"><a href="../reference/lt_residual.html">lt_residual</a></span><span class="op">(</span><span class="va">f</span>, <span class="va">Fb</span>, s <span class="op">=</span> <span class="fl">1</span>, t <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.5</span></span>
+<span></span>
+<span><span class="co"># At t=0.5</span></span>
+<span><span class="fu"><a href="../reference/lt_residual.html">lt_residual</a></span><span class="op">(</span><span class="va">f</span>, <span class="va">Fb</span>, s <span class="op">=</span> <span class="fl">1</span>, t <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.3032653</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="hazard-rate-and-mrl">Hazard Rate and MRL<a class="anchor" aria-label="anchor" href="#hazard-rate-and-mrl"></a>
+</h3>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Exp(1): constant hazard rate = 1</span></span>
+<span><span class="fu"><a href="../reference/hazard_rate.html">hazard_rate</a></span><span class="op">(</span><span class="va">f</span>, <span class="va">Fb</span>, t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1 1 1</span></span>
+<span></span>
+<span><span class="co"># Exp(1): constant MRL = 1 (memoryless)</span></span>
+<span><span class="fu"><a href="../reference/mean_residual.html">mean_residual</a></span><span class="op">(</span><span class="va">Fb</span>, t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1 1 1 1</span></span>
+<span></span>
+<span><span class="co"># Gamma(2,1): increasing hazard, decreasing MRL</span></span>
+<span><span class="va">fG</span>  <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html" class="external-link">dgamma</a></span><span class="op">(</span><span class="va">x</span>, shape <span class="op">=</span> <span class="fl">2</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">FbG</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/GammaDist.html" class="external-link">pgamma</a></span><span class="op">(</span><span class="va">x</span>, shape <span class="op">=</span> <span class="fl">2</span>, rate <span class="op">=</span> <span class="fl">1</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/hazard_rate.html">hazard_rate</a></span><span class="op">(</span><span class="va">fG</span>, <span class="va">FbG</span>, t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.3333333 0.5000000 0.6666667</span></span>
+<span><span class="fu"><a href="../reference/mean_residual.html">mean_residual</a></span><span class="op">(</span><span class="va">FbG</span>, t <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2.000000 1.666667 1.500000</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="nonparametric-estimation-1">Nonparametric Estimation<a class="anchor" aria-label="anchor" href="#nonparametric-estimation-1"></a>
 </h3>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">7</span><span class="op">)</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">rexp</a></span><span class="op">(</span><span class="fl">300</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/np_residual_info_gen.html">np_residual_info_gen</a></span><span class="op">(</span><span class="va">x</span>, alpha <span class="op">=</span> <span class="fl">2</span>, t <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.5736774</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">rexp</a></span><span class="op">(</span><span class="fl">500</span>, rate <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># True value</span></span>
-<span><span class="fu"><a href="../reference/residual_info_gen.html">residual_info_gen</a></span><span class="op">(</span><span class="va">f</span>, <span class="va">Fb</span>, alpha <span class="op">=</span> <span class="fl">2</span>, t <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.5</span></span></code></pre></div>
+<span><span class="co"># Nonparametric estimate at s=1, t=0: true value = 0.5</span></span>
+<span><span class="fu"><a href="../reference/np_lt_residual.html">np_lt_residual</a></span><span class="op">(</span><span class="va">x</span>, s <span class="op">=</span> <span class="fl">1</span>, t <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.4948948</span></span>
+<span></span>
+<span><span class="co"># At t=0.5</span></span>
+<span><span class="fu"><a href="../reference/np_lt_residual.html">np_lt_residual</a></span><span class="op">(</span><span class="va">x</span>, s <span class="op">=</span> <span class="fl">1</span>, t <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.3142664</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="regf-profile-and-characterisation">REGF Profile and Characterisation<a class="anchor" aria-label="anchor" href="#regf-profile-and-characterisation"></a>
+<h3 id="univariate-stochastic-orders">Univariate Stochastic Orders<a class="anchor" aria-label="anchor" href="#univariate-stochastic-orders"></a>
 </h3>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">f1</span>  <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">dexp</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">Fb1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">pexp</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">f2</span>  <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">dexp</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">Fb2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">pexp</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">2</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># LT-rl order: Exp(1) &lt;=_Lt-rl Exp(2)?</span></span>
+<span><span class="fu"><a href="../reference/lt_rl_order.html">lt_rl_order</a></span><span class="op">(</span><span class="va">f1</span>, <span class="va">Fb1</span>, <span class="va">f2</span>, <span class="va">Fb2</span>,</span>
+<span>            s_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>, t_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">order_holds</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span></span>
+<span><span class="co"># Hazard rate order: Exp(1) &lt;=_hr Exp(2)?</span></span>
+<span><span class="fu"><a href="../reference/hr_order.html">hr_order</a></span><span class="op">(</span><span class="va">f1</span>, <span class="va">Fb1</span>, <span class="va">f2</span>, <span class="va">Fb2</span>, t_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">order_holds</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span></span>
+<span><span class="co"># MRL order: Exp(2) &lt;=_mrl Exp(1)?</span></span>
+<span><span class="fu"><a href="../reference/mrl_order.html">mrl_order</a></span><span class="op">(</span><span class="va">Fb2</span>, <span class="va">Fb1</span>, t_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.5</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">order_holds</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="entropy-and-information-generating-functions">Entropy and Information Generating Functions<a class="anchor" aria-label="anchor" href="#entropy-and-information-generating-functions"></a>
+</h2>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">prof</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regf_profile.html">regf_profile</a></span><span class="op">(</span><span class="va">f</span>, <span class="va">Fb</span>, t <span class="op">=</span> <span class="fl">0.5</span>, plot <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="introduction_files/figure-html/regf_profile-1.png" class="r-plt" alt="REGF profile across alpha" width="576"><p class="caption">
-REGF profile across alpha
-</p>
-</div>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prof</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   alpha      REGF</span></span>
-<span><span class="co">#&gt; 1   0.1 9.9995227</span></span>
-<span><span class="co">#&gt; 2   0.3 3.3333333</span></span>
-<span><span class="co">#&gt; 3   0.5 2.0000000</span></span>
-<span><span class="co">#&gt; 4   0.7 1.4285714</span></span>
-<span><span class="co">#&gt; 5   0.9 1.1111111</span></span>
-<span><span class="co">#&gt; 6   1.1 0.9090909</span></span></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Log-linearity in t characterises exponential distribution</span></span>
-<span><span class="va">ch</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/regf_characterise.html">regf_characterise</a></span><span class="op">(</span><span class="va">f</span>, <span class="va">Fb</span>, alpha <span class="op">=</span> <span class="fl">2</span>, t_grid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">0.4</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">ch</span></span>
-<span><span class="co">#&gt;     t REGF      log_REGF        slope</span></span>
-<span><span class="co">#&gt; 1 0.0  0.5  0.000000e+00 4.123686e-16</span></span>
-<span><span class="co">#&gt; 2 0.4  0.5 -1.221245e-15 4.123686e-16</span></span>
-<span><span class="co">#&gt; 3 0.8  0.5  6.661338e-16 4.123686e-16</span></span>
-<span><span class="co">#&gt; 4 1.2  0.5  1.110223e-15 4.123686e-16</span></span>
-<span><span class="co">#&gt; 5 1.6  0.5  1.110223e-15 4.123686e-16</span></span>
-<span><span class="co">#&gt; 6 2.0  0.5 -3.330669e-16 4.123686e-16</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="simulation-study-for-regf-estimator">Simulation Study for REGF Estimator<a class="anchor" aria-label="anchor" href="#simulation-study-for-regf-estimator"></a>
-</h3>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/sim_regf.html">sim_regf</a></span><span class="op">(</span>lambda <span class="op">=</span> <span class="fl">1</span>, alpha <span class="op">=</span> <span class="fl">2</span>, t <span class="op">=</span> <span class="fl">0</span>, n_obs <span class="op">=</span> <span class="fl">200</span>, n_sim <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   true_value  mean_est        bias    variance         mse</span></span>
-<span><span class="co">#&gt; 1        0.5 0.4158333 -0.08416671 0.001263665 0.008347701</span></span></code></pre></div>
-</div>
+<code class="sourceCode R"><span><span class="co"># Shannon entropy of Exp(1) = 1</span></span>
+<span><span class="fu"><a href="../reference/shannon_entropy.html">shannon_entropy</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">dexp</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1</span></span>
+<span></span>
+<span><span class="co"># Golomb IGF of Exp(1) at alpha=2: 0.5</span></span>
+<span><span class="fu"><a href="../reference/info_gen_function.html">info_gen_function</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/Exponential.html" class="external-link">dexp</a></span><span class="op">(</span><span class="va">x</span>, <span class="fl">1</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.5</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
@@ -359,12 +341,13 @@ REGF profile across alpha
 <p>Jayalekshmi S., Rajesh G., Nair N.U. (2022). Bivariate Laplace
 transform of residual lives and their properties. <em>Communications in
 Statistics—Theory and Methods</em>. <a href="https://doi.org/10.1080/03610926.2022.2085874" class="external-link uri">https://doi.org/10.1080/03610926.2022.2085874</a></p>
-<p>Jayalekshmi S., Rajesh G. Bivariate Laplace transform order and
-ordering of reversed residual lives. <em>International Journal of
-Reliability, Quality and Safety Engineering</em>.</p>
-<p>Smitha S., Rajesh G., Jayalekshmi S. (2024). On residual entropy
-generating function. <em>Journal of the Indian Statistical
-Association</em>, 62(1), 81–93.</p>
+<p>Jayalekshmi S., Rajesh G., Nair N.U. (2022). Bivariate Laplace
+transform order and ordering of reversed residual lives.
+<em>International Journal of Reliability, Quality and Safety
+Engineering</em>. <a href="https://doi.org/10.1142/S0218539322500061" class="external-link uri">https://doi.org/10.1142/S0218539322500061</a></p>
+<p>Belzunce F., Ortega E., Ruiz J.M. (1999). The Laplace order and
+ordering of residual lives. <em>Statistics &amp; Probability
+Letters</em>, 42(2), 145–156. <a href="https://doi.org/10.1016/S0167-7152(98)00202-8" class="external-link uri">https://doi.org/10.1016/S0167-7152(98)00202-8</a></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -373,7 +356,7 @@ Association</em>, 62(1), 81–93.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Mahesh Divakaran, S. Jayalekshmi, G. Rajesh, N. Unnikrishnan Nair, Smitha S..</p>
+  <p>Developed by Mahesh Divakaran, S. Jayalekshmi, G. Rajesh, N. Unnikrishnan Nair.</p>
 </div>
 
 <div class="pkgdown-footer-right">

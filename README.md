@@ -7,9 +7,9 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 <!-- badges: end -->
 
-**BivLaplaceRL** is an R package for bivariate Laplace transforms, stochastic
-ordering concepts, and entropy measures in reliability analysis.  It consolidates
-the methods from three research publications into a single, CRAN-ready package.
+**BivLaplaceRL** is an R package for bivariate and univariate Laplace transforms
+of residual lives, stochastic ordering concepts, and entropy measures in
+reliability analysis.
 
 <div class="feature-row">
 
@@ -27,16 +27,15 @@ closed-form transforms for FGM and bivariate power distributions.</p>
 </div>
 
 <div class="feature-card">
-<h4>Entropy & Information</h4>
-<p>Residual entropy generating function (REGF) — a dynamic generalisation of
-Golomb's information generating function, with nonparametric estimation and
-Monte-Carlo simulation.</p>
+<h4>Univariate Methods</h4>
+<p>Univariate LT of residual life, hazard rate, mean residual life, and three
+stochastic orders (Lt-rl, hazard rate, MRL) with nonparametric estimation.</p>
 </div>
 
 <div class="feature-card">
 <h4>Stochastic Orders</h4>
-<p>Seven bivariate stochastic order checks: BLt-rl, BLt-Rrl, weak hazard rate,
-MRL, relative MRL, reversed hazard rate, and reversed MRL orders.</p>
+<p>Seven bivariate and three univariate stochastic order checks, each returning
+a logical flag and supporting diagnostic values.</p>
 </div>
 
 </div>
@@ -47,7 +46,6 @@ MRL, relative MRL, reversed hazard rate, and reversed MRL orders.</p>
 |-------|---------|---------|
 | Bivariate Laplace transform of residual lives and their properties | *Communications in Statistics — Theory and Methods* (2022) | Jayalekshmi S., Rajesh G., Nair N.U. |
 | Bivariate Laplace transform order and ordering of reversed residual lives | *Int. J. Reliability, Quality and Safety Engineering* | Jayalekshmi S., Rajesh G. |
-| On residual entropy generating function | *Journal of the Indian Statistical Association* 62(1):81–93 (2024) | Smitha S., Rajesh G., Jayalekshmi S. |
 
 ## Features
 
@@ -73,7 +71,13 @@ MRL, relative MRL, reversed hazard rate, and reversed MRL orders.</p>
 - `biv_rhazard_gradient()` — reversed hazard gradient
 - `biv_rmrl()` — reversed mean residual life
 
-### Stochastic Orders
+### Univariate Residual Life Analysis
+- `lt_residual()` — LT of residual life: E[e^{-sX} | X > t]
+- `hazard_rate()` — hazard rate h(t) = f(t)/S(t)
+- `mean_residual()` — mean residual life m(t) = E[X-t | X>t]
+- `np_lt_residual()` — nonparametric estimator
+
+### Stochastic Orders (Bivariate)
 - `blt_order_residual()` — BLt-rl order
 - `blt_order_reversed()` — BLt-Rrl order
 - `biv_whr_order()` — weak bivariate hazard rate order
@@ -82,18 +86,17 @@ MRL, relative MRL, reversed hazard rate, and reversed MRL orders.</p>
 - `biv_wrhr_order()` — weak bivariate reversed hazard rate order
 - `biv_wrmrl_order()` — weak bivariate reversed MRL order
 
+### Stochastic Orders (Univariate)
+- `lt_rl_order()` — Lt-rl order: L_X(s,t) ≤ L_Y(s,t) for all s, t
+- `hr_order()` — hazard rate order: h_X(t) ≤ h_Y(t) for all t
+- `mrl_order()` — MRL order: m_X(t) ≤ m_Y(t) for all t
+
 ### Entropy Measures
 - `shannon_entropy()` — Shannon differential entropy
 - `info_gen_function()` — Golomb information generating function
-- `residual_entropy()` — dynamic residual entropy (Ebrahimi & Pellerey 1995)
-- `residual_info_gen()` — residual entropy generating function (REGF)
-- `regf_profile()` — REGF profile over α
-- `regf_characterise()` — distribution characterisation via REGF
-- `np_residual_info_gen()` — nonparametric REGF estimator
-- `sim_regf()` — Monte-Carlo simulation for REGF estimator
 
 ### Plotting
-- `plot_blt_residual()`, `plot_blt_reversed()`, `plot_regf()`
+- `plot_blt_residual()`, `plot_blt_reversed()`
 
 ## Installation
 
@@ -123,15 +126,19 @@ np_blt_residual(dat, s1 = 1, s2 = 1, t1 = 0.3, t2 = 0.3)
 # 3. Compare with closed-form
 blt_residual_gumbel(s1 = 1, s2 = 1, t1 = 0.3, t2 = 0.3, k1 = 1, k2 = 1, theta = 0.5)
 
-# 4. Check weak bivariate hazard rate order
-sX <- function(x1, x2) sgumbel_biv(x1, x2, k1 = 2, k2 = 2)
-sY <- function(x1, x2) sgumbel_biv(x1, x2, k1 = 1, k2 = 1)
-biv_whr_order(sX, sY)$order_holds
+# 4. Univariate LT of residual life for Exp(1)
+f  <- function(x) dexp(x, 1)
+Fb <- function(x) pexp(x, 1, lower.tail = FALSE)
+lt_residual(f, Fb, s = 1, t = 0.5)
 
-# 5. Residual Entropy Generating Function
-f  <- function(x) dexp(x, rate = 1)
-Fb <- function(x) pexp(x, rate = 1, lower.tail = FALSE)
-residual_info_gen(f, Fb, alpha = 2, t = 0.5)
+# 5. Hazard rate and MRL
+hazard_rate(f, Fb, t = c(0.5, 1, 2))
+mean_residual(Fb, t = c(0, 0.5, 1, 2))
+
+# 6. Check univariate stochastic orders: Exp(2) <=_hr Exp(1)?
+f2  <- function(x) dexp(x, 2)
+Fb2 <- function(x) pexp(x, 2, lower.tail = FALSE)
+hr_order(f2, Fb2, f, Fb, t_grid = c(0.5, 1, 2))$order_holds
 ```
 
 ## Authors
@@ -143,9 +150,6 @@ imaheshdivakaran@gmail.com
 **S. Jayalekshmi**, **G. Rajesh**, **N. Unnikrishnan Nair**
 Department of Statistics, Cochin University of Science and Technology
 
-**Smitha S.**
-K. E. College, Mannanam
-
 ## References
 
 Jayalekshmi S., Rajesh G., Nair N.U. (2022). Bivariate Laplace transform of
@@ -154,10 +158,11 @@ Methods*. <https://doi.org/10.1080/03610926.2022.2085874>
 
 Jayalekshmi S., Rajesh G. Bivariate Laplace transform order and ordering of
 reversed residual lives. *International Journal of Reliability, Quality and
-Safety Engineering*.
+Safety Engineering*. <https://doi.org/10.1142/S0218539322500061>
 
-Smitha S., Rajesh G., Jayalekshmi S. (2024). On residual entropy generating
-function. *Journal of the Indian Statistical Association*, 62(1), 81–93.
+Belzunce F., Ortega E., Ruiz J.M. (1999). The Laplace order and ordering of
+residual lives. *Statistics & Probability Letters*, 42(2), 145--156. 
+<https://doi.org/10.1016/S0167-7152(98)00202-8>
 
 ## License
 

@@ -37,5 +37,5 @@ Golomb S.W. (1966). The information generating function of a probability
 distribution. *IEEE Transactions on Information Theory*, 12(1), 75--77.
 }
 \seealso{
-\code{\link{residual_info_gen}}
+\code{\link{shannon_entropy}}
 }

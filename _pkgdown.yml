@@ -19,7 +19,7 @@ template:
   includes:
     in_header: |
       <meta name="description"
-            content="R package for bivariate Laplace transforms, stochastic orders, and entropy measures in reliability analysis.">
+            content="R package for bivariate and univariate Laplace transforms, stochastic orders, and entropy measures in reliability analysis.">
 
 opengraph:
   image:
@@ -30,12 +30,11 @@ opengraph:
     card: summary
 
 home:
-  title: "BivLaplaceRL — Bivariate Laplace Transforms & Entropy in Reliability"
+  title: "BivLaplaceRL — Bivariate & Univariate Laplace Transforms in Reliability"
   description: >
-    R package implementing bivariate Laplace transforms of residual and
-    reversed residual lives, associated stochastic orders, and the residual
-    entropy generating function, based on research by Jayalekshmi, Rajesh,
-    Nair and Smitha.
+    R package implementing bivariate and univariate Laplace transforms of
+    residual lives, associated stochastic orders, and entropy measures,
+    based on research by Jayalekshmi, Rajesh, and Nair.
   sidebar:
     structure: [links, license, citation, authors, dev]
     components:
@@ -124,7 +123,18 @@ reference:
   - biv_rhazard_gradient
   - biv_rmrl
 
-- title: "Stochastic Ordering"
+- title: "Univariate Residual Life Analysis"
+  desc: >
+    Univariate Laplace transform of residual life
+    \eqn{L_X(s,t) = E[e^{-sX} | X > t]}, hazard rate \eqn{h(t) = f(t)/\bar{F}(t)},
+    mean residual life \eqn{m(t) = E[X-t | X > t]}, and a nonparametric estimator.
+  contents:
+  - lt_residual
+  - hazard_rate
+  - mean_residual
+  - np_lt_residual
+
+- title: "Stochastic Ordering (Bivariate)"
   desc: >
     Seven bivariate stochastic order checks: BLt-rl, BLt-Rrl, weak bivariate
     hazard rate, MRL, bivariate relative MRL, reversed hazard rate, and
@@ -139,30 +149,30 @@ reference:
   - biv_wrhr_order
   - biv_wrmrl_order
 
+- title: "Stochastic Ordering (Univariate)"
+  desc: >
+    Three univariate stochastic order checks based on the Laplace transform of
+    residual life, hazard rate, and mean residual life.
+  contents:
+  - lt_rl_order
+  - hr_order
+  - mrl_order
+
 - title: "Entropy and Information Generating Functions"
   desc: >
-    Shannon entropy, Golomb information generating function, dynamic residual
-    entropy (Ebrahimi & Pellerey 1995), and the residual entropy generating
-    function (REGF) introduced in Smitha, Rajesh & Jayalekshmi (2024, *JISA*
-    62(1)).  Includes nonparametric estimation and a Monte-Carlo simulator.
+    Shannon differential entropy and Golomb's (1966) information generating
+    function for non-negative continuous random variables.
   contents:
   - shannon_entropy
   - info_gen_function
-  - residual_entropy
-  - residual_info_gen
-  - regf_profile
-  - regf_characterise
-  - np_residual_info_gen
-  - sim_regf
 
 - title: "Plotting Utilities"
   desc: >
     Convenience wrappers that produce ready-made plots for the BLT of residual
-    lives, the BLT of reversed residual lives, and the REGF profile.
+    lives and the BLT of reversed residual lives.
   contents:
   - plot_blt_residual
   - plot_blt_reversed
-  - plot_regf
 
 - title: "Package"
   desc: Package-level documentation and metadata.

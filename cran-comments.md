@@ -1,9 +1,9 @@
-## Resubmission
+## Resubmission (0.3.0)
 
-* Fixed: Removed Unicode character `≈` (U+2248) from the `\examples{}` section
-  of `residual_info_gen.Rd` (replaced with ASCII `approx`). This character
-  caused a LaTeX error when building the PDF manual, resulting in 1 ERROR and
-  1 WARNING in the previous submission.
+* Added univariate Laplace transform of residual life (`lt_residual()`),
+  hazard rate (`hazard_rate()`), mean residual life (`mean_residual()`),
+  nonparametric estimator (`np_lt_residual()`), and three univariate
+  stochastic order checks (`lt_rl_order()`, `hr_order()`, `mrl_order()`).
 
 ## R CMD check results
 
@@ -22,11 +22,11 @@
 
 ## Notes
 
-* "Possibly misspelled words in DESCRIPTION": The flagged words (BLt, Rrl, FGM,
-  NBUHR, NWUHR, Ebrahimi, Pellerey, Golomb's, Farlie, Morgenstern, Schur,
-  Jayalekshmi, Rajesh, rl) are either domain-specific abbreviations for
-  reliability and stochastic order concepts, or surnames of cited authors.
-  They are all spelled correctly.
+* "Possibly misspelled words in DESCRIPTION": The flagged words (BLt, Rrl,
+  FGM, NBUHR, NWUHR, Golomb's, Farlie, Morgenstern, Schur, Jayalekshmi,
+  Rajesh, rl, Lt) are either domain-specific abbreviations for reliability and
+  stochastic order concepts, or surnames of cited authors. They are all spelled
+  correctly.
 
 * "unable to verify current time": Network connectivity issue on the checking
   machine; not a package problem.

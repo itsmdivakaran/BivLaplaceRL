@@ -30,10 +30,7 @@ shannon_entropy(function(x) dexp(x, rate = 2))
 \references{
 Shannon C.E. (1948). A mathematical theory of communication. *Bell System
 Technical Journal*, 27(3), 379--423.
-
-Smitha S., Rajesh G., Jayalekshmi S. (2024). *Journal of the Indian
-Statistical Association*, 62(1), 81--93.
 }
 \seealso{
-\code{\link{residual_entropy}}, \code{\link{info_gen_function}}
+\code{\link{info_gen_function}}
 }

@@ -7,8 +7,9 @@
 \title{BivLaplaceRL: Bivariate Laplace Transforms, Stochastic Orders, and Entropy
 Measures in Reliability}
 \description{
-\pkg{BivLaplaceRL} provides a unified framework for three interconnected
-research themes in reliability analysis and survival theory:
+\pkg{BivLaplaceRL} provides a unified framework for reliability analysis
+covering bivariate and univariate Laplace transforms of residual lives,
+associated stochastic orders, and entropy measures:
 
 \strong{1. Bivariate Laplace Transform of Residual Lives}
 
@@ -26,24 +27,26 @@ Reference: Jayalekshmi, Rajesh, and Nair (2022)
 Implements the bivariate Laplace transform of reversed (past) residual lives,
 the BLt-Rrl stochastic order, and connections with weak bivariate reversed
 hazard rate and reversed mean residual life orders.
+Reference: Jayalekshmi, Rajesh, and Nair (2022)
+\doi{10.1142/S0218539322500061}.
 
-\strong{3. Residual Entropy Generating Function}
+\strong{3. Univariate Residual Life Analysis}
 
-Implements the dynamic information generating function (REGF), the residual
-entropy of Ebrahimi and Pellerey (1995), Golomb's (1966) information
-generating function, and nonparametric estimation of REGF with Monte-Carlo
-simulation support.
+Implements the univariate Laplace transform of residual life
+\eqn{L_X(s,t) = E[e^{-sX} \mid X > t]}, hazard rate, mean residual life,
+and the corresponding stochastic orders (Lt-rl order, hazard rate order,
+MRL order), together with a nonparametric estimator.
 }
 \section{Parametric families}{
 
 Gumbel bivariate exponential, Farlie-Gumbel-Morgenstern (FGM), bivariate
-power, Schur-constant, and exponential distributions are built in.
+power, and Schur-constant distributions are built in.
 }
 
 \section{Plotting}{
 
-\code{\link{plot_blt_residual}}, \code{\link{plot_blt_reversed}}, and
-\code{\link{plot_regf}} provide ready-made visualisations.
+\code{\link{plot_blt_residual}} and \code{\link{plot_blt_reversed}} provide
+ready-made visualisations.
 }
 
 \references{
@@ -51,19 +54,14 @@ Jayalekshmi S., Rajesh G., Nair N.U. (2022). Bivariate Laplace transform of
 residual lives and their properties. *Communications in Statistics - Theory
 and Methods*. \doi{10.1080/03610926.2022.2085874}
 
-Jayalekshmi S., Rajesh G. Bivariate Laplace transform order and ordering of
-reversed residual lives. *International Journal of Reliability, Quality and
-Safety Engineering*.
-
-Smitha S., Rajesh G., Jayalekshmi S. (2024). On residual entropy generating
-function. *Journal of the Indian Statistical Association*, 62(1), 81--93.
+Jayalekshmi S., Rajesh G., Nair N.U. (2022). Bivariate Laplace transform
+order and ordering of reversed residual lives. *International Journal of
+Reliability, Quality and Safety Engineering*.
+\doi{10.1142/S0218539322500061}
 
 Belzunce F., Ortega E., Ruiz J.M. (1999). The Laplace order and ordering of
 residual lives. *Statistics & Probability Letters*, 42(2), 145--156.
-
-Ebrahimi N., Pellerey F. (1995). New partial ordering of survival functions
-based on the notion of uncertainty. *Journal of Applied Probability*, 32(1),
-202--211.
+\doi{10.1016/S0167-7152(98)00202-8}
 
 Golomb S.W. (1966). The information generating function of a probability
 distribution. *IEEE Transactions on Information Theory*, 12(1), 75--77.
@@ -82,10 +80,9 @@ Useful links:
 
 Authors:
 \itemize{
-  \item S. Jayalekshmi (Department of Statistics, Cochin University of Science and Technology)
+  \item S. Jayalekshmi (Department of Statistics, Cochin University of Science and Technology) [contributor]
   \item G. Rajesh \email{rajeshgstat@gmail.com} (Department of Statistics, Cochin University of Science and Technology)
   \item N. Unnikrishnan Nair (Department of Statistics, Cochin University of Science and Technology)
-  \item Smitha S. (K. E. College, Mannanam)
 }
 
 }

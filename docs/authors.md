@@ -6,7 +6,7 @@
   [](https://orcid.org/0000-0002-3488-0857)  
   Amity School of Applied Sciences, Amity University Lucknow
 
-- **S. Jayalekshmi**. Author.  
+- **S. Jayalekshmi**. Author, contributor.  
   Department of Statistics, Cochin University of Science and Technology
 
 - **G. Rajesh**. Author.  
@@ -14,9 +14,6 @@
 
 - **N. Unnikrishnan Nair**. Author.  
   Department of Statistics, Cochin University of Science and Technology
-
-- **Smitha S.**. Author.  
-  K. E. College, Mannanam
 
 ## Citation
 

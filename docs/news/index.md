@@ -1,6 +1,31 @@
 # Changelog
 
+## BivLaplaceRL 1.0.0
+
+### New features
+
+- Added univariate residual life analysis:
+  - [`lt_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/lt_residual.md)
+    — Laplace transform of residual life E\[e^{-sX} \| X \> t\]
+  - [`hazard_rate()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/hazard_rate.md)
+    — hazard rate h(t) = f(t)/S(t)
+  - [`mean_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/mean_residual.md)
+    — mean residual life m(t) = E\[X-t \| X\>t\]
+  - [`np_lt_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/np_lt_residual.md)
+    — nonparametric estimator
+- Added three univariate stochastic order checks:
+  - [`lt_rl_order()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/lt_rl_order.md)
+    — Laplace transform order of residual lives
+  - [`hr_order()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/hr_order.md)
+    — hazard rate order
+  - [`mrl_order()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/mrl_order.md)
+    — mean residual life order
+
+------------------------------------------------------------------------
+
 ## BivLaplaceRL 0.2.0
+
+CRAN release: 2026-04-29
 
 ### CRAN submission release
 
@@ -48,18 +73,11 @@
 
 - Added entropy and information generating functions:
   [`shannon_entropy()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/shannon_entropy.md),
-  [`info_gen_function()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/info_gen_function.md),
-  [`residual_entropy()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/residual_entropy.md),
-  [`residual_info_gen()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/residual_info_gen.md),
-  [`regf_profile()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/regf_profile.md),
-  [`regf_characterise()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/regf_characterise.md),
-  [`np_residual_info_gen()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/np_residual_info_gen.md),
-  [`sim_regf()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/sim_regf.md).
+  [`info_gen_function()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/info_gen_function.md).
 
 - Added parametric distributions: Gumbel bivariate exponential, FGM,
   bivariate power, Schur-constant.
 
 - Added plotting utilities:
   [`plot_blt_residual()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/plot_blt_residual.md),
-  [`plot_blt_reversed()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/plot_blt_reversed.md),
-  [`plot_regf()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/plot_regf.md).
+  [`plot_blt_reversed()`](https://itsmdivakaran.github.io/BivLaplaceRL/reference/plot_blt_reversed.md).

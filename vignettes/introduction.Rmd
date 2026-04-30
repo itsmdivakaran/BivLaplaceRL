@@ -20,13 +20,12 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-**BivLaplaceRL** is an R package that implements statistical methods from three
-research papers on bivariate Laplace transforms and entropy measures in
-reliability theory:
+**BivLaplaceRL** is an R package that implements statistical methods from two
+research papers on bivariate Laplace transforms in reliability theory, together
+with a set of univariate residual life tools:
 
 1. Bivariate Laplace transform of residual lives (Jayalekshmi, Rajesh & Nair, 2022)
 2. Bivariate Laplace transform order of reversed residual lives (Jayalekshmi & Rajesh)
-3. Residual entropy generating function (Smitha, Rajesh & Jayalekshmi, 2024)
 
 ```{r setup}
 library(BivLaplaceRL)
@@ -40,12 +39,9 @@ modelling.
 ### Gumbel Bivariate Exponential
 
 ```{r gumbel}
-# Simulate 200 observations
 set.seed(42)
 dat <- rgumbel_biv(200, k1 = 1, k2 = 1.5, theta = 0.3)
 head(dat)
-
-# Survival function at a point
 sgumbel_biv(1, 1, k1 = 1, k2 = 1.5, theta = 0.3)
 ```
 
@@ -54,7 +50,6 @@ sgumbel_biv(1, 1, k1 = 1, k2 = 1.5, theta = 0.3)
 ```{r fgm}
 set.seed(1)
 dat_fgm <- rfgm_biv(100, theta = 0.5)
-head(dat_fgm)
 pfgm_biv(0.5, 0.6, theta = 0.5)
 ```
 
@@ -63,15 +58,12 @@ pfgm_biv(0.5, 0.6, theta = 0.5)
 ```{r schur}
 set.seed(2)
 dat_sc <- rschur_biv(100, lambda = 1)
-# Marginals are standard exponential
-summary(rowSums(dat_sc))  # T = X1 + X2 ~ Exp(lambda)
+summary(rowSums(dat_sc))
 ```
 
 ## Bivariate Laplace Transform of Residual Lives
 
 ### Closed-Form (Gumbel Distribution)
-
-The key result from Jayalekshmi et al. (2022) is:
 
 $$L^*_{X_{t_1|t_2}}(s_1) = \frac{1}{k_1 + s_1 + \theta t_2}, \quad
   L^*_{X_{t_2|t_1}}(s_2) = \frac{1}{k_2 + s_2 + \theta t_1}.$$
@@ -82,8 +74,6 @@ blt_residual_gumbel(s1 = 1, s2 = 1, t1 = 0.5, t2 = 0.5,
 ```
 
 ### Numerical Computation
-
-For a user-supplied survival function:
 
 ```{r numerical}
 my_surv <- function(x1, x2) exp(-x1 - x2 - 0.3 * x1 * x2)
@@ -112,10 +102,7 @@ sim_blt_residual(n_obs = 200, n_sim = 50, s1 = 1, s2 = 1,
 ## Bivariate Hazard Gradient and MRL
 
 ```{r hazard_mrl}
-# Hazard gradient
 biv_hazard_gradient(t1 = 1, t2 = 1, k1 = 1, k2 = 1, theta = 0.3)
-
-# Mean residual life
 biv_mean_residual(t1 = 0.5, t2 = 0.5, k1 = 1, k2 = 1, theta = 0)
 ```
 
@@ -131,22 +118,12 @@ cat("Component 2:", res$class2, "\n")
 ## Bivariate Laplace Transform of Reversed Residual Lives
 
 ```{r reversed}
-# FGM distribution
 blt_reversed(s1 = 1, s2 = 1, t1 = 0.5, t2 = 0.5, theta = 0.3)
-
-# G form (used for characterisation)
-blt_reversed(s1 = 1, s2 = 1, t1 = 0.5, t2 = 0.5, theta = 0.3, g_form = TRUE)
-
-# Reversed hazard gradient
 biv_rhazard_gradient(x1 = 0.5, x2 = 0.5, theta = 0.3)
-
-# Reversed MRL
 biv_rmrl(x1 = 0.5, x2 = 0.5, theta = 0.3)
 ```
 
-## Stochastic Orders
-
-### BLt-rl Order
+## Bivariate Stochastic Orders
 
 ```{r blt_order}
 sX <- function(x1, x2) sgumbel_biv(x1, x2, k1 = 1, k2 = 1, theta = 0.2)
@@ -154,77 +131,103 @@ sY <- function(x1, x2) sgumbel_biv(x1, x2, k1 = 2, k2 = 2, theta = 0.2)
 res <- blt_order_residual(sX, sY, s1 = 1, s2 = 1,
                           t1_grid = c(0.5, 1), t2_grid = c(0.5, 1))
 cat("X <=_BLt-rl Y:", res$order_holds, "\n")
+
+res2 <- biv_whr_order(sX, sY, t1_grid = c(0.5, 1), t2_grid = c(0.5, 1))
+cat("X <=_whr Y:", res2$order_holds, "\n")
 ```
 
-### Weak Bivariate Hazard Rate Order
+## Univariate Residual Life Analysis
 
-```{r whr_order}
-res <- biv_whr_order(sX, sY, t1_grid = c(0.5, 1), t2_grid = c(0.5, 1))
-cat("X <=_whr Y:", res$order_holds, "\n")
-```
+The package now provides a complete set of univariate residual life tools
+that complement the bivariate framework.
 
-## Residual Entropy Generating Function
+### Laplace Transform of Residual Life
 
-### Shannon Entropy and Golomb IGF
+For a non-negative continuous random variable $X$ with density $f$ and
+survival function $\bar{F}$:
 
-```{r entropy_basics}
-# Shannon entropy of Exp(1) = 1
-shannon_entropy(function(x) dexp(x, 1))
+$$L_X(s,t) = E[e^{-sX} \mid X > t]
+  = \frac{1}{\bar{F}(t)}\int_t^\infty e^{-sx} f(x)\,dx.$$
 
-# Golomb IGF of Exp(1) at alpha=2: lambda/2 = 0.5
-info_gen_function(function(x) dexp(x, 1), alpha = 2)
-```
-
-### Dynamic REGF
-
-```{r regf}
+```{r uni_lt}
 f  <- function(x) dexp(x, 1)
 Fb <- function(x) pexp(x, 1, lower.tail = FALSE)
 
-# REGF at various t values
-t_vals <- seq(0, 2, 0.5)
-sapply(t_vals, function(t) residual_info_gen(f, Fb, alpha = 2, t = t))
+# At t=0: L_X(1, 0) = 1/(1+1) = 0.5
+lt_residual(f, Fb, s = 1, t = 0)
+
+# At t=0.5
+lt_residual(f, Fb, s = 1, t = 0.5)
+```
+
+### Hazard Rate and MRL
+
+```{r uni_hr_mrl}
+# Exp(1): constant hazard rate = 1
+hazard_rate(f, Fb, t = c(0.5, 1, 2))
+
+# Exp(1): constant MRL = 1 (memoryless)
+mean_residual(Fb, t = c(0, 0.5, 1, 2))
+
+# Gamma(2,1): increasing hazard, decreasing MRL
+fG  <- function(x) dgamma(x, shape = 2, rate = 1)
+FbG <- function(x) pgamma(x, shape = 2, rate = 1, lower.tail = FALSE)
+hazard_rate(fG, FbG, t = c(0.5, 1, 2))
+mean_residual(FbG, t = c(0, 0.5, 1))
 ```
 
 ### Nonparametric Estimation
 
-```{r np_regf}
+```{r uni_np}
 set.seed(7)
-x <- rexp(300, rate = 1)
-np_residual_info_gen(x, alpha = 2, t = 0.5)
+x <- rexp(500, rate = 1)
 
-# True value
-residual_info_gen(f, Fb, alpha = 2, t = 0.5)
+# Nonparametric estimate at s=1, t=0: true value = 0.5
+np_lt_residual(x, s = 1, t = 0)
+
+# At t=0.5
+np_lt_residual(x, s = 1, t = 0.5)
 ```
 
-### REGF Profile and Characterisation
+### Univariate Stochastic Orders
 
-```{r regf_profile, fig.cap="REGF profile across alpha"}
-prof <- regf_profile(f, Fb, t = 0.5, plot = TRUE)
-head(prof)
+```{r uni_orders}
+f1  <- function(x) dexp(x, 1)
+Fb1 <- function(x) pexp(x, 1, lower.tail = FALSE)
+f2  <- function(x) dexp(x, 2)
+Fb2 <- function(x) pexp(x, 2, lower.tail = FALSE)
+
+# LT-rl order: Exp(1) <=_Lt-rl Exp(2)?
+lt_rl_order(f1, Fb1, f2, Fb2,
+            s_grid = c(0.5, 1, 2), t_grid = c(0, 0.5, 1))$order_holds
+
+# Hazard rate order: Exp(1) <=_hr Exp(2)?
+hr_order(f1, Fb1, f2, Fb2, t_grid = c(0.5, 1, 2))$order_holds
+
+# MRL order: Exp(2) <=_mrl Exp(1)?
+mrl_order(Fb2, Fb1, t_grid = c(0, 0.5, 1, 2))$order_holds
 ```
 
-```{r regf_charac}
-# Log-linearity in t characterises exponential distribution
-ch <- regf_characterise(f, Fb, alpha = 2, t_grid = seq(0, 2, 0.4))
-ch
-```
+## Entropy and Information Generating Functions
 
-### Simulation Study for REGF Estimator
+```{r entropy}
+# Shannon entropy of Exp(1) = 1
+shannon_entropy(function(x) dexp(x, 1))
 
-```{r sim_regf}
-sim_regf(lambda = 1, alpha = 2, t = 0, n_obs = 200, n_sim = 50)
+# Golomb IGF of Exp(1) at alpha=2: 0.5
+info_gen_function(function(x) dexp(x, 1), alpha = 2)
 ```
 
 ## References
 
 Jayalekshmi S., Rajesh G., Nair N.U. (2022). Bivariate Laplace transform of
-residual lives and their properties. *Communications in Statistics—Theory and
-Methods*. https://doi.org/10.1080/03610926.2022.2085874
+residual lives and their properties. *Communications in Statistics---Theory and
+Methods*. <https://doi.org/10.1080/03610926.2022.2085874>
 
-Jayalekshmi S., Rajesh G. Bivariate Laplace transform order and ordering of
-reversed residual lives. *International Journal of Reliability, Quality and
-Safety Engineering*.
+Jayalekshmi S., Rajesh G., Nair N.U. (2022). Bivariate Laplace transform order
+and ordering of reversed residual lives. *International Journal of Reliability,
+Quality and Safety Engineering*. <https://doi.org/10.1142/S0218539322500061>
 
-Smitha S., Rajesh G., Jayalekshmi S. (2024). On residual entropy generating
-function. *Journal of the Indian Statistical Association*, 62(1), 81–93.
+Belzunce F., Ortega E., Ruiz J.M. (1999). The Laplace order and ordering of
+residual lives. *Statistics & Probability Letters*, 42(2), 145--156.
+<https://doi.org/10.1016/S0167-7152(98)00202-8>
